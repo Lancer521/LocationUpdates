@@ -366,14 +366,6 @@ public class MainActivity extends AppCompatActivity implements
                 Toast.LENGTH_SHORT).show();
     }
 
-    private void findNearestStop() {
-        float[] results = null;
-        Location.distanceBetween(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), 41.740788, -111.830626, results);
-        if(results == null){
-            results = null;
-        }
-    }
-
     @Override
     public void onConnectionSuspended(int cause) {
         // The connection to Google Play services was lost for some reason. We call connect() to
