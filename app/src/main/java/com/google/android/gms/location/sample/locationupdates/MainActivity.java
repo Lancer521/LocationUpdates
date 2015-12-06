@@ -114,6 +114,8 @@ public class MainActivity extends AppCompatActivity implements
      */
     protected String mLastUpdateTime;
 
+    protected Object[] array = new Object[]{};
+
     /**
      * Data members to hold bus route information
      */
@@ -124,6 +126,9 @@ public class MainActivity extends AppCompatActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        array = getResources().getStringArray(R.array.stops);
+
 
         // Locate the UI widgets.
         mStartUpdatesButton = (Button) findViewById(R.id.start_updates_button);
@@ -366,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements
         mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
         updateUI();
         stops.insertElementAt(mCurrentLocation,0);
-        new findLocation().execute(stops);
+        new findLocation(MainActivity.this).execute(stops);
         Toast.makeText(this, getResources().getString(R.string.location_updated_message),
                 Toast.LENGTH_SHORT).show();
     }
