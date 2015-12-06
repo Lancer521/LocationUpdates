@@ -36,6 +36,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
@@ -138,6 +139,10 @@ public class MainActivity extends AppCompatActivity implements
 
         mRequestingLocationUpdates = false;
         mLastUpdateTime = "";
+
+        Calendar c = Calendar.getInstance();
+        int minutes = c.get(Calendar.MINUTE);
+        Toast.makeText(this, "Minutes: " + minutes, Toast.LENGTH_SHORT).show();
 
         // Update values using data stored in the Bundle.
         updateValuesFromBundle(savedInstanceState);
