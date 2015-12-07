@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="stop_times">
+<raw>
+    <entry name="stop_times">
         <stop_times>
             <route>1</route>
             <minutes>4</minutes>
@@ -955,5 +955,5 @@
             <stop_id>103</stop_id>
             <stop_name>Intermodal Transit Center</stop_name>
         </stop_times>
-    </string-array>
-</resources>
+    </entry>
+</raw>

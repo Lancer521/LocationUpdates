@@ -16,6 +16,8 @@
 
 package com.google.android.gms.location.sample.locationupdates;
 
+import com.google.android.gms.location.sample.locationupdates.StackOverflowXmlParser.Entry;
+
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -35,9 +37,14 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -122,12 +129,15 @@ public class MainActivity extends AppCompatActivity implements
     protected Location stop = null;
     protected Vector<Location> stops = new Vector<>(); //use vector, ie vector.insertAtLocation
 
+    List<Entry> lat_long_entries = null;
+    List<Entry> stop_times_entries = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        array = getResources().getStringArray(R.array.stops);
+        //array = getResources().getStringArray(R.array.stops);
 
 
         // Locate the UI widgets.
@@ -145,9 +155,19 @@ public class MainActivity extends AppCompatActivity implements
         mRequestingLocationUpdates = false;
         mLastUpdateTime = "";
 
+        //Toast the current time (testing functionality, move elsewhere)
         Calendar c = Calendar.getInstance();
         int minutes = c.get(Calendar.MINUTE);
         Toast.makeText(this, "Minutes: " + minutes, Toast.LENGTH_SHORT).show();
+
+        //Populate bus info arrays
+        try {
+            loadXml();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Update values using data stored in the Bundle.
         updateValuesFromBundle(savedInstanceState);
@@ -391,7 +411,6 @@ public class MainActivity extends AppCompatActivity implements
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
     }
 
-
     /**
      * Stores activity data in the Bundle.
      */
@@ -401,4 +420,30 @@ public class MainActivity extends AppCompatActivity implements
         savedInstanceState.putString(LAST_UPDATED_TIME_STRING_KEY, mLastUpdateTime);
         super.onSaveInstanceState(savedInstanceState);
     }
+
+    private void loadXml() throws XmlPullParserException, IOException {
+        InputStream lat_long_stream = null;
+        InputStream stop_times_stream = null;
+
+        StackOverflowXmlParser mParser = new StackOverflowXmlParser();
+
+        try{
+            lat_long_stream = getResources().openRawResource(R.raw.stop_lat_long);
+            stop_times_stream = getResources().openRawResource(R.raw.stop_times);
+            lat_long_entries = mParser.parse(lat_long_stream);
+            stop_times_entries = mParser.parse(stop_times_stream);
+
+        } catch (Exception e){
+            Log.i("","***Error opening InputStream***", e);
+            e.printStackTrace();
+        } finally{
+            if(lat_long_stream != null){
+                lat_long_stream.close();
+            }
+            if(stop_times_stream != null){
+                stop_times_stream.close();
+            }
+        }
+    }
+
 }

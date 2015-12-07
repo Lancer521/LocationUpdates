@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="stop_lat_long">
+<raw>
+    <entry name="stop_lat_long">
         <stop_lat_long>
             <stop_id>103</stop_id>
             <stop_name>Intermodal Transit Center</stop_name>
@@ -79,5 +79,5 @@
             <latitude>41.76801</latitude>
             <longitude>-111.80461</longitude>
         </stop_lat_long>
-    </string-array>
-</resources>
+    </entry>
+</raw>
