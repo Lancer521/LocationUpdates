@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="stop_lat_long">
+        <stop_lat_long>
+            <stop_id>103</stop_id>
+            <stop_name>Intermodal Transit Center</stop_name>
+            <latitude>41.740696</latitude>
+            <longitude>-111.830901</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>110</stop_id>
+            <stop_name>Intermodal Transit Center</stop_name>
+            <latitude>41.740696</latitude>
+            <longitude>-111.830901</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>111</stop_id>
+            <stop_name>Intermodal Transit Center</stop_name>
+            <latitude>41.740696</latitude>
+            <longitude>-111.830901</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1007</stop_id>
+            <stop_name>USU Vet Science Bldg</stop_name>
+            <latitude>41.744367</latitude>
+            <longitude>-111.81097</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1012</stop_id>
+            <stop_name>1450 East 1500 North</stop_name>
+            <latitude>41.758349</latitude>
+            <longitude>-111.79794</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1021</stop_id>
+            <stop_name>USU Education Bldg</stop_name>
+            <latitude>41.74456</latitude>
+            <longitude>-111.81098</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1217</stop_id>
+            <stop_name>North Logan City Hall</stop_name>
+            <latitude>41.768322</latitude>
+            <longitude>-111.804454</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1225</stop_id>
+            <stop_name>66 E Hyde Park Ln</stop_name>
+            <latitude>41.79913</latitude>
+            <longitude>-111.81782</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1232</stop_id>
+            <stop_name>Sky View High School</stop_name>
+            <latitude>41.82644</latitude>
+            <longitude>-111.82635</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1243</stop_id>
+            <stop_name>Richmond 40 S State</stop_name>
+            <latitude>41.92179</latitude>
+            <longitude>-111.80885</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1251</stop_id>
+            <stop_name>Smithfield Civic Center</stop_name>
+            <latitude>41.838448</latitude>
+            <longitude>-111.831246</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1254</stop_id>
+            <stop_name>Sky View High School</stop_name>
+            <latitude>41.82644</latitude>
+            <longitude>-111.82635</longitude>
+        </stop_lat_long>
+        <stop_lat_long>
+            <stop_id>1268</stop_id>
+            <stop_name>Cache County School District</stop_name>
+            <latitude>41.76801</latitude>
+            <longitude>-111.80461</longitude>
+        </stop_lat_long>
+    </string-array>
+</resources>
