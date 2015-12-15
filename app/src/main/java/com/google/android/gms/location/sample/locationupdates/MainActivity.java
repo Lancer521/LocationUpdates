@@ -19,9 +19,7 @@ package com.google.android.gms.location.sample.locationupdates;
 import com.google.android.gms.location.sample.locationupdates.StackOverflowXmlParser.Entry;
 
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -37,15 +35,20 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Getting Location Updates.
@@ -422,7 +425,26 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void loadXml() throws XmlPullParserException, IOException {
-        InputStream lat_long_stream = null;
+
+        URL posUrl = getClass().getResource("stop_lat_long.xml");
+        URL timeUrl = getClass().getResource("stop_times.xml");
+
+        File lat_long_file = new File ("C:\\Users\\Ty\\Downloads\\android-play-location-master\\android-play-location-master\\LocationUpdates\\app\\src\\main\\res\\raw\\stop_lat_long.xml");
+        File stop_times_file = new File ("raw/stop_times.xml");
+
+        DomParser positionParser = new DomParser(lat_long_file);
+        DomParser timeParser = new DomParser(stop_times_file);
+
+        try {
+            positionParser.readData();
+            timeParser.readData();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        /*InputStream lat_long_stream = null;
         InputStream stop_times_stream = null;
 
         StackOverflowXmlParser mParser = new StackOverflowXmlParser();
@@ -443,7 +465,7 @@ public class MainActivity extends AppCompatActivity implements
             if(stop_times_stream != null){
                 stop_times_stream.close();
             }
-        }
+        }*/
     }
 
 }

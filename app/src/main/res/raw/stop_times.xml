@@ -1,959 +1,957 @@
 <?xml version="1.0" encoding="utf-8"?>
-<raw>
-    <entry name="stop_times">
-        <stop_times>
-            <route>1</route>
-            <minutes>4</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>1</route>
-            <minutes>11</minutes>
-            <stop_id>1012</stop_id>
-            <stop_name>1450 East 1500 North</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>1</route>
-            <minutes>19</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>1</route>
-            <minutes>26</minutes>
-            <stop_id>111</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>1</route>
-            <minutes>34</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>1</route>
-            <minutes>41</minutes>
-            <stop_id>1012</stop_id>
-            <stop_name>1450 East 1500 North</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>1</route>
-            <minutes>49</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>1</route>
-            <minutes>56</minutes>
-            <stop_id>111</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>4</route>
-            <minutes>15</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>4</route>
-            <minutes>22</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>4</route>
-            <minutes>45</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>4</route>
-            <minutes>52</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>5:49</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>5:55</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:00</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:05</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:25</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:34</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:34</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:40</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:40</minutes>
-            <stop_id>1254</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:45</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:47</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:50</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>6:55</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:00</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:10</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:10</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:19</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:19</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:25</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:25</minutes>
-            <stop_id>1254</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:30</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:32</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:35</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:40</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:45</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:55</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>7:55</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:04</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:04</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:10</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:10</minutes>
-            <stop_id>1254</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:15</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:17</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:20</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:25</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:30</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:40</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:40</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:49</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:55</minutes>
-            <stop_id>1254</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:02</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:10</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:15</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:25</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:49</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>8:55</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:00</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:05</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:25</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:34</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:34</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:40</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:40</minutes>
-            <stop_id>1254</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:45</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:47</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:50</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>9:55</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>10:00</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>10:10</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>10:19</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>10:25</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>10:30</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>10:35</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>10:55</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:04</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:10</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:17</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:25</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:30</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:40</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:49</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>11:55</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>12:00</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>12:05</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>12:25</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>12:34</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>12:40</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>12:47</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>12:55</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>13:00</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>13:10</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>13:19</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>13:25</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>13:30</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>13:35</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>13:55</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:04</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:10</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:17</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:25</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:30</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:40</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:49</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>14:55</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:00</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:05</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:25</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:34</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:40</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:47</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:55</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:00</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:10</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:34</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:40</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:45</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>15:50</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:10</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:19</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:25</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:32</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:40</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:45</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:55</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:19</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:25</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:30</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:35</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>16:55</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:04</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:10</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:17</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:25</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:30</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:40</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:04</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:10</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:15</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:20</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:40</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:49</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:55</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:02</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:10</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:15</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:25</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:49</minutes>
-            <stop_id>1007</stop_id>
-            <stop_name>USU Vet Science Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>17:55</minutes>
-            <stop_id>1217</stop_id>
-            <stop_name>North Logan City Hall</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:00</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>66 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:05</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:25</minutes>
-            <stop_id>1243</stop_id>
-            <stop_name>Richmond 40 S State</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:34</minutes>
-            <stop_id>1251</stop_id>
-            <stop_name>Smithfield Civic Center</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:40</minutes>
-            <stop_id>1232</stop_id>
-            <stop_name>Sky View High School</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:47</minutes>
-            <stop_id>1225</stop_id>
-            <stop_name>67 E Hyde Park Ln</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>18:55</minutes>
-            <stop_id>1268</stop_id>
-            <stop_name>Cache County School District</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>19:00</minutes>
-            <stop_id>1021</stop_id>
-            <stop_name>USU Education Bldg</stop_name>
-        </stop_times>
-        <stop_times>
-            <route>C</route>
-            <minutes>19:10</minutes>
-            <stop_id>103</stop_id>
-            <stop_name>Intermodal Transit Center</stop_name>
-        </stop_times>
+<root>
+    <entry>
+        <route>1</route>
+        <minutes>4</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
     </entry>
-</raw>
+    <entry>
+        <route>1</route>
+        <minutes>11</minutes>
+        <stop_id>1012</stop_id>
+        <stop_name>1450 East 1500 North</stop_name>
+    </entry>
+    <entry>
+        <route>1</route>
+        <minutes>19</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>1</route>
+        <minutes>26</minutes>
+        <stop_id>111</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>1</route>
+        <minutes>34</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>1</route>
+        <minutes>41</minutes>
+        <stop_id>1012</stop_id>
+        <stop_name>1450 East 1500 North</stop_name>
+    </entry>
+    <entry>
+        <route>1</route>
+        <minutes>49</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>1</route>
+        <minutes>56</minutes>
+        <stop_id>111</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>4</route>
+        <minutes>15</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>4</route>
+        <minutes>22</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>4</route>
+        <minutes>45</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>4</route>
+        <minutes>52</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>5:49</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>5:55</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:00</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:05</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:25</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:34</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:34</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:40</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:40</minutes>
+        <stop_id>1254</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:45</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:47</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:50</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>6:55</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:00</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:10</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:10</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:19</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:19</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:25</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:25</minutes>
+        <stop_id>1254</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:30</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:32</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:35</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:40</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:45</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:55</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>7:55</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:04</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:04</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:10</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:10</minutes>
+        <stop_id>1254</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:15</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:17</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:20</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:25</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:30</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:40</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:40</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:49</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:55</minutes>
+        <stop_id>1254</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:02</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:10</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:15</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:25</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:49</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>8:55</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:00</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:05</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:25</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:34</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:34</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:40</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:40</minutes>
+        <stop_id>1254</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:45</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:47</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:50</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>9:55</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>10:00</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>10:10</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>10:19</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>10:25</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>10:30</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>10:35</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>10:55</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:04</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:10</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:17</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:25</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:30</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:40</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:49</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>11:55</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>12:00</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>12:05</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>12:25</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>12:34</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>12:40</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>12:47</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>12:55</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>13:00</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>13:10</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>13:19</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>13:25</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>13:30</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>13:35</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>13:55</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:04</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:10</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:17</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:25</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:30</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:40</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:49</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>14:55</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:00</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:05</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:25</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:34</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:40</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:47</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:55</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:00</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:10</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:34</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:40</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:45</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>15:50</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:10</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:19</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:25</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:32</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:40</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:45</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:55</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:19</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:25</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:30</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:35</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>16:55</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:04</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:10</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:17</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:25</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:30</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:40</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:04</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:10</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:15</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:20</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:40</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:49</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:55</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:02</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:10</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:15</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:25</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:49</minutes>
+        <stop_id>1007</stop_id>
+        <stop_name>USU Vet Science Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>17:55</minutes>
+        <stop_id>1217</stop_id>
+        <stop_name>North Logan City Hall</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:00</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>66 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:05</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:25</minutes>
+        <stop_id>1243</stop_id>
+        <stop_name>Richmond 40 S State</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:34</minutes>
+        <stop_id>1251</stop_id>
+        <stop_name>Smithfield Civic Center</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:40</minutes>
+        <stop_id>1232</stop_id>
+        <stop_name>Sky View High School</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:47</minutes>
+        <stop_id>1225</stop_id>
+        <stop_name>67 E Hyde Park Ln</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>18:55</minutes>
+        <stop_id>1268</stop_id>
+        <stop_name>Cache County School District</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>19:00</minutes>
+        <stop_id>1021</stop_id>
+        <stop_name>USU Education Bldg</stop_name>
+    </entry>
+    <entry>
+        <route>C</route>
+        <minutes>19:10</minutes>
+        <stop_id>103</stop_id>
+        <stop_name>Intermodal Transit Center</stop_name>
+    </entry>
+</root>

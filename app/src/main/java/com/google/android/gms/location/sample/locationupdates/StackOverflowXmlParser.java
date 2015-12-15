@@ -51,33 +51,29 @@ public class StackOverflowXmlParser {
     }
 
     private List<Entry> readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
-        List<Entry> entries = new ArrayList<Entry>();
+        List<Entry> entries = new ArrayList<>();
 
-        /*int eventType = parser.getEventType();
-        Log.i("TAG", "The event type is: " + eventType);
-
-        while (eventType != XmlPullParser.START_DOCUMENT) {
-            eventType = parser.next();
-            Log.i("TAG", "The event type is: " + eventType);
-        }*/
-
-    //    parser.require(XmlPullParser.START_TAG, ns, null);
-        if(parser.next() == XmlPullParser.START_TAG) {                  //PROBLEM IS HERE
-        while (parser.next() != XmlPullParser.END_TAG) {
-                if (parser.getEventType() != XmlPullParser.START_TAG) {
+    //    parser.require(XmlPullParser.START_TAG, ns, "root");              //PROBLEM IS HERE. tried null for root, still no good
+    //    if(parser.next() == XmlPullParser.START_TAG) {                  //Attempted fix, didn't work...
+    //        while (parser.next() != XmlPullParser.END_TAG) {
+            while(parser.getEventType() != XmlPullParser.END_TAG) {
+                if (parser.getEventType() == XmlPullParser.START_TAG) {
                     continue;
                 }
                 String name = parser.getName();
+
+
                 // Starts by looking for the entry tag
-                if (name.equals("entry")) {
-                    entries.add(readEntry(parser));
-                } else {
-                    skip(parser);
+                if (name != null) {
+                    if (name.equals("entry")) {
+                        entries.add(readEntry(parser));
+                    } else {
+                        skip(parser);
+                    }
                 }
-            }
+        //    }
         }
-        return entries;
-    }
+        return entries;    }
 
     // This class represents a single entry (post) in the XML feed.
     // It includes the data members "atop_id," "stop_name," "latitude", and "longitude."
