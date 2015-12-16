@@ -19,7 +19,8 @@ public class loadSchedule {
 
     protected static void build(Vector<Location> stops, Vector<Vector<Date>> times){
 
-        for(int i = 0; i < 10; i++){
+        //Changed to 11 fo testing purposes.  Only need 10
+        for(int i = 0; i < 11; i++){
             Vector<Date> temp = new Vector<>();
             times.add(temp);
         }
@@ -79,6 +80,11 @@ public class loadSchedule {
         temp = new Location("Cache County School District");
         temp.setLatitude(41.76801);
         temp.setLongitude(-111.80461);
+        stops.add(temp);
+
+        temp = new Location("Testing from Institute");
+        temp.setLatitude(41.743130);
+        temp.setLongitude(-111.814892);
         stops.add(temp);
     }
 
@@ -154,9 +160,12 @@ public class loadSchedule {
         edu_time.set(currYear, currMonth, currDay, 7, 15, 0);
         Calendar transit_time = Calendar.getInstance();
         transit_time.set(currYear, currMonth, currDay, 7, 22, 0);
+        Calendar test_time = Calendar.getInstance();
+        test_time.add(Calendar.MINUTE, 2);
 
         times.elementAt(3).add(edu_time.getTime());
         times.elementAt(0).add(transit_time.getTime());
+        times.elementAt(10).add(test_time.getTime());
 
         for(int i = 0; i < 27; i++) {
             edu_time.add(Calendar.MINUTE, 30);
