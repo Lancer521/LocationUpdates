@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -38,13 +39,7 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
         }
 
         //Create 2D vector from xml arrays?
-        Vector<Vector<Integer>> stops = new Vector<>();
-        Vector<Integer> times = new Vector<>();
-        times.add(0);
-        times.add(19);
-        times.add(21);
-        stops.add(times);
-        stops.add(times);
+        Vector<Vector<Date>> stops = new Vector<>(params[0].times);
 
         return howLong(stops, minIndex);
 
@@ -60,26 +55,25 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
         Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
     }
 
-    private String howLong(Vector<Vector<Integer>> times, float minIndex){
-        Vector<Integer> possibleTimes = new Vector<>();
-
-        //Find bus times at location found previously
-        for(int i = 0; i < times.size(); i++){
-            if(times.elementAt(i).indexOf(minIndex) != -1)
-                possibleTimes.add(times.elementAt(i).indexOf(minIndex));
-        }
+    private String howLong(Vector<Vector<Date>> times, int minIndex){
 
         Calendar c = Calendar.getInstance();
-        int minutes = c.get(Calendar.MINUTE);
+        Date currentTime = c.getTime();
+        c.add(Calendar.MINUTE, 3);
+        Date maxTime = c.getTime();
 
-
-
-        //Find stop time 1-2 minutes ahead
-        for (int i = 0; i < possibleTimes.size(); i++) {
-            if (possibleTimes.elementAt(i) >= minutes+1 && possibleTimes.elementAt(i) <= minutes+2) {
-                return "Bus will arrive at " + possibleTimes.elementAt(i);
+        for(int i = 0; i < times.elementAt(minIndex).size(); i++){
+            if(currentTime.before(times.elementAt(minIndex).elementAt(i)) && maxTime.after(times.elementAt(minIndex).elementAt(i))){
+                return "Bus will arrive at " + times.elementAt(minIndex).elementAt(i).getTime();
             }
         }
+
         return "failed";
+
+        /*if(currentTime.getHours() == times.elementAt(minIndex).elementAt(i).getHours()){
+            if(currentTime.getTime() <= times.elementAt(minIndex).elementAt(i).getTime() && maxTime.getTime() >= times.elementAt(minIndex).elementAt(i).getTime()){
+                return "Bus will arrive at " + times.elementAt(minIndex).elementAt(i).getTime();
+            }
+        }*/
     }
 }

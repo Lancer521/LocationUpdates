@@ -12,6 +12,10 @@ import java.util.Vector;
 public class loadSchedule {
 
     public loadSchedule(){}
+    private static Calendar currCal = Calendar.getInstance();
+    private static int currYear = currCal.get(Calendar.YEAR);
+    private static int currMonth = currCal.get(Calendar.MONTH);
+    private static int currDay = currCal.get(Calendar.DAY_OF_MONTH);
 
     protected static void build(Vector<Location> stops, Vector<Vector<Date>> times){
 
@@ -86,13 +90,13 @@ public class loadSchedule {
 
     private static void createRoute1(Vector<Vector<Date>> times) {
         Calendar vet_sci_time = Calendar.getInstance();
-        vet_sci_time.set(2015, 12, 15, 7, 4, 0);
+        vet_sci_time.set(currYear, currMonth, currDay, 7, 4, 0);
         Calendar church_time = Calendar.getInstance();
-        church_time.set(2015, 12, 15, 7, 11, 0);
+        church_time.set(currYear, currMonth, currDay, 7, 11, 0);
         Calendar edu_time = Calendar.getInstance();
-        edu_time.set(2015, 12, 15, 7, 19, 0);
+        edu_time.set(currYear, currMonth, currDay, 7, 19, 0);
         Calendar transit_time = Calendar.getInstance();
-        transit_time.set(2015, 12, 15, 7, 25, 0);
+        transit_time.set(currYear, currMonth, currDay, 7, 25, 0);
 
         times.elementAt(0).add(transit_time.getTime());
         times.elementAt(1).add(vet_sci_time.getTime());
@@ -147,9 +151,9 @@ public class loadSchedule {
 
     private static void createRoute4(Vector<Vector<Date>> times) {
         Calendar edu_time = Calendar.getInstance();
-        edu_time.set(2015,12,15,7,15,0);
+        edu_time.set(currYear, currMonth, currDay, 7, 15, 0);
         Calendar transit_time = Calendar.getInstance();
-        transit_time.set(2015, 12, 15, 7, 22, 0);
+        transit_time.set(currYear, currMonth, currDay, 7, 22, 0);
 
         times.elementAt(3).add(edu_time.getTime());
         times.elementAt(0).add(transit_time.getTime());
@@ -176,17 +180,17 @@ public class loadSchedule {
         Calendar education_time = Calendar.getInstance();
         Calendar transit_time = Calendar.getInstance();
 
-        vet_sci_time.set(2015,12,15,5,49,0);
-        city_hall_time.set(2015,12,15,5,55,0);
-        hyde_park_time_1.set(2015,12,15,6,0,0);
-        sky_view_time_1.set(2015,12,15,6,5,0);
-        richmond_time.set(2015,12,15,6,25,0);
-        civic_center_time.set(2015,12,15,6,34,0);
-        sky_view_time_2.set(2015,12,15,6,40,0);
-        hyde_park_time_2.set(2015,12,15,6,47,0);
-        school_district_time.set(2015,12,15,6,55,0);
-        education_time.set(2015,12,15,7,0,0);
-        transit_time.set(2015, 12, 15, 7, 10, 0);
+        vet_sci_time.set(currYear,currMonth,currDay,5,49,0);
+        city_hall_time.set(currYear,currMonth,currDay,5,55,0);
+        hyde_park_time_1.set(currYear,currMonth,currDay,6,0,0);
+        sky_view_time_1.set(currYear,currMonth,currDay,6,5,0);
+        richmond_time.set(currYear,currMonth,currDay,6,25,0);
+        civic_center_time.set(currYear,currMonth,currDay,6,34,0);
+        sky_view_time_2.set(currYear,currMonth,currDay,6,40,0);
+        hyde_park_time_2.set(currYear,currMonth,currDay,6,47,0);
+        school_district_time.set(currYear,currMonth,currDay,6,55,0);
+        education_time.set(currYear,currMonth,currDay,7,0,0);
+        transit_time.set(currYear, currMonth, currDay, 7, 10, 0);
 
         times.elementAt(0).add(transit_time.getTime());
         times.elementAt(1).add(vet_sci_time.getTime());

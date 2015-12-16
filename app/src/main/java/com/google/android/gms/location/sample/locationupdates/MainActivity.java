@@ -16,8 +16,6 @@
 
 package com.google.android.gms.location.sample.locationupdates;
 
-import com.google.android.gms.location.sample.locationupdates.StackOverflowXmlParser.Entry;
-
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,20 +33,9 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Vector;
-
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Getting Location Updates.
@@ -129,22 +116,13 @@ public class MainActivity extends AppCompatActivity implements
     /**
      * Data members to hold bus route information
      */
-    protected Location stop = null;
-    protected Vector<Location> stops = new Vector<>(); //use vector, ie vector.insertAtLocation
-
-    //For hardcoding vectors:
     protected myTaskParams stops_and_times = new myTaskParams();
 
-    List<Entry> lat_long_entries = null;
-    List<Entry> stop_times_entries = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
-        //array = getResources().getStringArray(R.array.stops);
-
 
         // Locate the UI widgets.
         mStartUpdatesButton = (Button) findViewById(R.id.start_updates_button);
@@ -169,15 +147,6 @@ public class MainActivity extends AppCompatActivity implements
         //Populate hard-coded vectors for time/location
         loadSchedule.build(stops_and_times.locations, stops_and_times.times);
 
-        //Populate bus info arrays
-        /*try {
-            loadXml();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
         // Update values using data stored in the Bundle.
         updateValuesFromBundle(savedInstanceState);
 
@@ -185,13 +154,6 @@ public class MainActivity extends AppCompatActivity implements
         // API.
         buildGoogleApiClient();
 
-    }
-
-    private void loadSchedule(Vector<Location> vector) {
-        Location l = new Location("temp");
-        l.setLatitude(41.740788);
-        l.setLongitude(-111.830626);
-        vector.add(l);
     }
 
     /**
@@ -379,7 +341,6 @@ public class MainActivity extends AppCompatActivity implements
         if (mCurrentLocation == null) {
             mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
             mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
-            loadSchedule(stops);
             updateUI();
         }
 
@@ -404,8 +365,6 @@ public class MainActivity extends AppCompatActivity implements
 
         //create and execute Asynchronous process:
         new findLocation(MainActivity.this).execute(stops_and_times);
-
-        stops.removeElementAt(0);
 
         Toast.makeText(this, getResources().getString(R.string.location_updated_message),
                 Toast.LENGTH_SHORT).show();
@@ -436,48 +395,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onSaveInstanceState(savedInstanceState);
     }
 
-    private void loadXml() throws XmlPullParserException, IOException {
 
-        URL posUrl = getClass().getResource("stop_lat_long.xml");
-        URL timeUrl = getClass().getResource("stop_times.xml");
-
-        File lat_long_file = new File ("C:\\Users\\Ty\\Downloads\\android-play-location-master\\android-play-location-master\\LocationUpdates\\app\\src\\main\\res\\raw\\stop_lat_long.xml");
-        File stop_times_file = new File ("raw/stop_times.xml");
-
-        DomParser positionParser = new DomParser(lat_long_file);
-        DomParser timeParser = new DomParser(stop_times_file);
-
-        try {
-            positionParser.readData();
-            timeParser.readData();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
-
-        /*InputStream lat_long_stream = null;
-        InputStream stop_times_stream = null;
-
-        StackOverflowXmlParser mParser = new StackOverflowXmlParser();
-
-        try{
-            lat_long_stream = getResources().openRawResource(R.raw.stop_lat_long);
-            stop_times_stream = getResources().openRawResource(R.raw.stop_times);
-            lat_long_entries = mParser.parse(lat_long_stream);
-            stop_times_entries = mParser.parse(stop_times_stream);
-
-        } catch (Exception e){
-            Log.i("","***Error opening InputStream***", e);
-            e.printStackTrace();
-        } finally{
-            if(lat_long_stream != null){
-                lat_long_stream.close();
-            }
-            if(stop_times_stream != null){
-                stop_times_stream.close();
-            }
-        }*/
-    }
 
 }
