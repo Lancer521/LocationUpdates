@@ -38,6 +38,17 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * This app is built upon sample code provided by Google at:
+ * http://developer.android.com/training/location/receive-location-updates.html
+ *
+ * The full source code is found at:
+ * https://github.com/googlesamples/android-play-location/tree/master/LocationUpdates
+ *
+ * There have been extensive modification to this code, all of which are the work of
+ * Tylen Smith.  Any other sources used have been cited where appropriate.
+ */
+
+/**
  * Getting Location Updates.
  *
  * Demonstrates how to use the Fused Location Provider API to get updates about a device's

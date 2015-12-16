@@ -64,6 +64,7 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
 
         for(int i = 0; i < times.elementAt(minIndex).size(); i++){
             if(currentTime.before(times.elementAt(minIndex).elementAt(i)) && maxTime.after(times.elementAt(minIndex).elementAt(i))){
+                if(currentTime)
                 return "Bus will arrive at " + times.elementAt(minIndex).elementAt(i).getTime();
             }
         }
