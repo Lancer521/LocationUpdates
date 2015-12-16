@@ -6,13 +6,12 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Vector;
 
 /**
  * Created by Ty on 12/5/2015.
  */
-public class findLocation extends AsyncTask<Vector<Location>, Integer, String>{
+public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
 
     Context mContext = null;
 
@@ -21,35 +20,33 @@ public class findLocation extends AsyncTask<Vector<Location>, Integer, String>{
     }
 
     @Override
-    protected String doInBackground(Vector<Location>... params) {
+    protected String doInBackground(myTaskParams... params) {
 
-        Vector<Location> temp = params[0];
-        int size = temp.size()-1;
+        myTaskParams temp = new myTaskParams(params[0].locations, params[0].times, params[0].currentLocation);
+        int size = temp.locations.size();
         float distance = 1000;
-        Location currentLocation = temp.firstElement();
-        temp.removeElementAt(0);
+        Location currentLocation = params[0].currentLocation;
 
         //Get distance to all destinations; keep smallest distance
         int minIndex = 0;
         for(int i = 0; i < size; i++){
-            if(distance > currentLocation.distanceTo(temp.firstElement())) {
-                distance = currentLocation.distanceTo(temp.firstElement());
+            if(distance > currentLocation.distanceTo(temp.locations.firstElement())) {
+                distance = currentLocation.distanceTo(temp.locations.firstElement());
                 minIndex = i;
             }
-            temp.removeElementAt(0);
+            temp.locations.removeElementAt(0);
         }
 
         //Create 2D vector from xml arrays?
-        Vector<Vector<Integer>> times = new Vector<>();
-        Vector<Integer> times_one = new Vector<>();
-        times_one.add(0);
-        times_one.add(19);
-        times_one.add(21);
-        times.add(times_one);
-        times.add(times_one);
+        Vector<Vector<Integer>> stops = new Vector<>();
+        Vector<Integer> times = new Vector<>();
+        times.add(0);
+        times.add(19);
+        times.add(21);
+        stops.add(times);
+        stops.add(times);
 
-        return howLong(times, minIndex);
-
+        return howLong(stops, minIndex);
 
     }
 
@@ -75,13 +72,14 @@ public class findLocation extends AsyncTask<Vector<Location>, Integer, String>{
         Calendar c = Calendar.getInstance();
         int minutes = c.get(Calendar.MINUTE);
 
+
+
         //Find stop time 1-2 minutes ahead
         for (int i = 0; i < possibleTimes.size(); i++) {
             if (possibleTimes.elementAt(i) >= minutes+1 && possibleTimes.elementAt(i) <= minutes+2) {
                 return "Bus will arrive at " + possibleTimes.elementAt(i);
             }
         }
-
-        return null;
+        return "failed";
     }
 }

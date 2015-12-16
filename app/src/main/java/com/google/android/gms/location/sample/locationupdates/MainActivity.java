@@ -132,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements
     protected Location stop = null;
     protected Vector<Location> stops = new Vector<>(); //use vector, ie vector.insertAtLocation
 
+    //For hardcoding vectors:
+    protected myTaskParams stops_and_times = new myTaskParams();
+
     List<Entry> lat_long_entries = null;
     List<Entry> stop_times_entries = null;
 
@@ -163,14 +166,17 @@ public class MainActivity extends AppCompatActivity implements
         int minutes = c.get(Calendar.MINUTE);
         Toast.makeText(this, "Minutes: " + minutes, Toast.LENGTH_SHORT).show();
 
+        //Populate hard-coded vectors for time/location
+        loadSchedule.build(stops_and_times.locations, stops_and_times.times);
+
         //Populate bus info arrays
-        try {
+        /*try {
             loadXml();
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // Update values using data stored in the Bundle.
         updateValuesFromBundle(savedInstanceState);
@@ -393,8 +399,14 @@ public class MainActivity extends AppCompatActivity implements
         mCurrentLocation = location;
         mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
         updateUI();
-        stops.insertElementAt(mCurrentLocation,0);
-        new findLocation(MainActivity.this).execute(stops);
+
+        stops_and_times.currentLocation = mCurrentLocation;
+
+        //create and execute Asynchronous process:
+        new findLocation(MainActivity.this).execute(stops_and_times);
+
+        stops.removeElementAt(0);
+
         Toast.makeText(this, getResources().getString(R.string.location_updated_message),
                 Toast.LENGTH_SHORT).show();
     }
