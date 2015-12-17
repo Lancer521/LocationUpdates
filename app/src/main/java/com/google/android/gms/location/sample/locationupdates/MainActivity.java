@@ -34,7 +34,6 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -46,6 +45,8 @@ import java.util.Date;
  *
  * There have been extensive modification to this code, all of which are the work of
  * Tylen Smith.  Any other sources used have been cited where appropriate.
+ *
+ * Icon made by Freepik [http://www.freepik.com] from www.flaticon.com
  */
 
 /**
@@ -135,8 +136,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        stops_and_times.context = this;
-
         // Locate the UI widgets.
         mStartUpdatesButton = (Button) findViewById(R.id.start_updates_button);
         mStopUpdatesButton = (Button) findViewById(R.id.stop_updates_button);
@@ -151,11 +150,6 @@ public class MainActivity extends AppCompatActivity implements
 
         mRequestingLocationUpdates = false;
         mLastUpdateTime = "";
-
-        //Toast the current time (testing functionality, move elsewhere)
-        Calendar c = Calendar.getInstance();
-        int minutes = c.get(Calendar.MINUTE);
-        Toast.makeText(this, "Minutes: " + minutes, Toast.LENGTH_SHORT).show();
 
         //Populate hard-coded vectors for time/location
         loadSchedule.build(stops_and_times.locations, stops_and_times.times);
@@ -249,6 +243,7 @@ public class MainActivity extends AppCompatActivity implements
      */
     public void startUpdatesButtonHandler(View view) {
         if (!mRequestingLocationUpdates) {
+            stops_and_times.wasNotified = false;
             mRequestingLocationUpdates = true;
             startLocationUpdates();
         }
@@ -322,18 +317,17 @@ public class MainActivity extends AppCompatActivity implements
     protected void onPause() {
         super.onPause();
         // Stop location updates to save battery, but don't disconnect the GoogleApiClient object.
-        if (mGoogleApiClient.isConnected()) {
+        /*if (mGoogleApiClient.isConnected()) {
             stopLocationUpdates();
-        }
+        }*/
     }
 
     @Override
     protected void onStop() {
-        mGoogleApiClient.disconnect();
+        //mGoogleApiClient.disconnect();
         
         super.onStop();
     }
-
     /**
      * Runs when a GoogleApiClient object successfully connects.
      */
@@ -379,8 +373,13 @@ public class MainActivity extends AppCompatActivity implements
         //create and execute Asynchronous process:
         new findLocation(MainActivity.this).execute(stops_and_times);
 
-        Toast.makeText(this, getResources().getString(R.string.location_updated_message),
-                Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(this, getResources().getString(R.string.location_updated_message),
+                Toast.LENGTH_SHORT).show();*/
+
+        if(stops_and_times.wasNotified) {
+            mRequestingLocationUpdates = false;
+            stopLocationUpdates();
+        }
     }
 
     @Override
@@ -407,7 +406,5 @@ public class MainActivity extends AppCompatActivity implements
         savedInstanceState.putString(LAST_UPDATED_TIME_STRING_KEY, mLastUpdateTime);
         super.onSaveInstanceState(savedInstanceState);
     }
-
-
 
 }

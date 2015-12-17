@@ -82,9 +82,12 @@ public class loadSchedule {
         temp.setLongitude(-111.80461);
         stops.add(temp);
 
+        /**
+         * THIS LOCATION IS STRICTLY FOR TESTING PURPOSES
+         */
         temp = new Location("Testing from Institute");
-        temp.setLatitude(41.743130);
-        temp.setLongitude(-111.814892);
+        temp.setLatitude(41.741978);
+        temp.setLongitude(-111.809861);
         stops.add(temp);
     }
 

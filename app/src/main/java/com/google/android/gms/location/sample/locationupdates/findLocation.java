@@ -27,13 +27,13 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
     @Override
     protected String doInBackground(myTaskParams... params) {
 
-        myTaskParams temp = new myTaskParams(params[0].locations, params[0].times, params[0].currentLocation, params[0].message);
+        myTaskParams temp = new myTaskParams(params[0].locations, params[0].times, params[0].currentLocation, params[0].message, params[0].wasNotified);
         int size = temp.locations.size();
-        float distance = 5000;
+        float distance = 1000;
         Location currentLocation = params[0].currentLocation;
         params[0].message = null;
 
-        SimpleDateFormat sdf = new SimpleDateFormat("HH.mm.ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
 
         //Get distance to all destinations; keep smallest distance
         int minIndex = 0;
@@ -48,19 +48,23 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
         //Create 2D vector from xml arrays?
         Vector<Vector<Date>> stops = new Vector<>(params[0].times);
 
-        Date date = howLong(stops, minIndex);
+        Date date = howLong(stops, minIndex, params[0]);
 
-        if(date != null){
+        //format the date (time) and create a notification.
+        if(date != null && !params[0].wasNotified){
             params[0].message = sdf.format(date);
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(params[0].context)
-                    .setSmallIcon(R.drawable.powered_by_google_dark)
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mContext)
+                    .setSmallIcon(R.drawable.bus_icon)
                     .setContentTitle("Bus nearby!")
-                    .setContentText("The bus arrives at " + params[0].message)
+                    .setContentText("The bus arrives at " + params[0].getStopName() + " at " + params[0].message)
                     .setVibrate(new long[]{2000, 2000, 2000})
                     .setLights(Color.RED, 3000, 3000);
-            int mNotificationId = 001;
+            int mNotificationId = 1;
             NotificationManager mNotifyMgr = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
             mNotifyMgr.notify(mNotificationId, mBuilder.build());
+            params[0].wasNotified = true;
+
+            //IN THE FUTURE: Add actions to notification, including what happens when clicked.
         }
 
         return params[0].message;
@@ -74,10 +78,10 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
      */
     @Override
     protected void onPostExecute(String result){
-        Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
     }
 
-    private Date howLong(Vector<Vector<Date>> times, int minIndex){
+    private Date howLong(Vector<Vector<Date>> times, int minIndex, myTaskParams params){
 
         Calendar c = Calendar.getInstance();
         Date currentTime = c.getTime();
@@ -86,8 +90,10 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
 
         for(int i = 0; i < times.elementAt(minIndex).size(); i++){
             if(currentTime.before(times.elementAt(minIndex).elementAt(i)) && maxTime.after(times.elementAt(minIndex).elementAt(i))){
+                params.whichBus = i;
                 return times.elementAt(minIndex).elementAt(i);
             } else if (currentTime.equals(times.elementAt(minIndex).elementAt(i))){
+                params.whichBus = i;
                 return times.elementAt(minIndex).elementAt(i);
             }
         }
