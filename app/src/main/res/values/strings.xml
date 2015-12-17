@@ -15,7 +15,7 @@
   limitations under the License.
 -->
 <resources>
-    <string name="app_name">Getting Location Updates</string>
+    <string name="app_name">Find My Bus</string>
 
     <string name="latitude_label">Latitude</string>
     <string name="longitude_label">Longitude</string>
@@ -23,5 +23,14 @@
 
     <string name="start_updates">Start updates</string>
     <string name="stop_updates">Stop updates</string>
+    <string name="save_preferences">Save Preferences</string>
     <string name="location_updated_message">Location updated</string>
+
+    <string name="wait_time_text">The bus is within:</string>
+    <string name="wait_time_min_text">minutes</string>
+    <string name="bus_stop_distance_text">miles</string>
+    <string name="temp_text">The temperature is:</string>
+    <string name="temp_above_text">above</string>
+    <string name="temp_below_text">below</string>
+    <string name="degree_symbol">\u2109</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources id="temp_above_array">
+    <string-array name="temp_above_array">
+        <item>60 \u2109</item>
+        <item>65 \u2109</item>
+        <item>70 \u2109</item>
+        <item>75 \u2109</item>
+        <item>80 \u2109</item>
+        <item>85 \u2109</item>
+        <item>90 \u2109</item>
+        <item>95 \u2109</item>
+        <item>100 \u2109</item>
+    </string-array>
+</resources>

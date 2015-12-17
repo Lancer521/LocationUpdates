@@ -1,6 +1,5 @@
 package com.google.android.gms.location.sample.locationupdates;
 
-import android.content.Context;
 import android.location.Location;
 
 import java.util.Date;
@@ -15,9 +14,22 @@ public class myTaskParams {
     protected Vector<Location> locations;
     protected Vector<Vector<Date>> times;
     protected Location currentLocation;
-    protected int whichBus;
+    protected int whichStop;
     protected String message;
     protected Boolean wasNotified;
+
+    //Preferences
+    protected int minutes;
+    protected double miles;
+    protected int meters;
+    protected int temp_below;
+    protected int temp_above;
+
+    //Spinner indices
+    private int minIndex;
+    private int mileIndex;
+    private int tempBIndex;
+    private int tempAIndex;
 
     public myTaskParams(){
         locations = new Vector<>();
@@ -25,7 +37,16 @@ public class myTaskParams {
         currentLocation = null;
         message = null;
         wasNotified = false;
-        whichBus = -1;
+        whichStop = -1;
+        minutes = 3;
+        miles = .3;
+        meters = toMeters(miles);
+        temp_below = 50;
+        temp_above = 90;
+    }
+
+    protected int toMeters(double f) {
+        return (int)(f * 1609.34);
     }
 
     public myTaskParams(Vector<Location> l, Vector<Vector<Date>> t, Location cl, String m, Boolean w){
@@ -37,7 +58,7 @@ public class myTaskParams {
     }
 
     protected String getStopName(){
-        switch(whichBus){
+        switch(whichStop){
             case 0:
                 return "Transit Center";
             case 1:
@@ -64,4 +85,46 @@ public class myTaskParams {
                 return null;
         }
     }
+
+    protected void setMinIndex(int i){
+        minIndex = i;
+    }
+
+    protected void setMileIndex(int i){
+        mileIndex = i;
+    }
+
+    protected void setTempBIndex(int i){
+        tempBIndex = i;
+    }
+
+    protected void setTempAIndex(int i){
+        tempAIndex = i;
+    }
+
+    protected int getMinIndex(){
+        return minIndex;
+    }
+
+    protected int getMileIndex(){
+        return mileIndex;
+    }
+
+    protected int getTempBIndex(){
+        return tempBIndex;
+    }
+
+    protected int getTempAIndex(){
+        return tempAIndex;
+    }
+
+    protected void parseTemp(String t, int whichTemp){
+        t = t.substring(0, t.length()-2);
+        if(whichTemp == 0){
+            temp_above = Integer.parseInt(t);
+        } else if(whichTemp == 1){
+            temp_below = Integer.parseInt(t);
+        }
+    }
+
 }

@@ -16,14 +16,16 @@
 
 package com.google.android.gms.location.sample.locationupdates;
 
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -106,6 +108,10 @@ public class MainActivity extends AppCompatActivity implements
     protected TextView mLastUpdateTimeTextView;
     protected TextView mLatitudeTextView;
     protected TextView mLongitudeTextView;
+    protected Spinner minSpinner;
+    protected Spinner mileSpinner;
+    protected Spinner aboveSpinner;
+    protected Spinner belowSpinner;
 
     // Labels.
     protected String mLatitudeLabel;
@@ -142,6 +148,20 @@ public class MainActivity extends AppCompatActivity implements
         mLatitudeTextView = (TextView) findViewById(R.id.latitude_text);
         mLongitudeTextView = (TextView) findViewById(R.id.longitude_text);
         mLastUpdateTimeTextView = (TextView) findViewById(R.id.last_update_time_text);
+
+        minSpinner = (Spinner) findViewById(R.id.minutes_spinner);
+        mileSpinner = (Spinner) findViewById(R.id.miles_spinner);
+        aboveSpinner = (Spinner) findViewById(R.id.temp_above_spinner);
+        belowSpinner = (Spinner) findViewById(R.id.temp_below_spinner);
+
+        // Restore preferences
+        restorePreferences();
+
+        //Initialize Spinners
+        initializeMinSpinner();
+        initializeMileSpinner();
+        initializeAboveSpinner();
+        initializeBelowSpinner();
 
         // Set labels.
         mLatitudeLabel = getResources().getString(R.string.latitude_label);
@@ -242,6 +262,8 @@ public class MainActivity extends AppCompatActivity implements
      * updates have already been requested.
      */
     public void startUpdatesButtonHandler(View view) {
+        getSpinnerValues();
+
         if (!mRequestingLocationUpdates) {
             stops_and_times.wasNotified = false;
             mRequestingLocationUpdates = true;
@@ -258,6 +280,43 @@ public class MainActivity extends AppCompatActivity implements
             mRequestingLocationUpdates = false;
             stopLocationUpdates();
         }
+    }
+
+    /**
+     * Save preferences using Shared Preferences
+     */
+    public void savePreferencesButtonHandler(View view){
+        getSpinnerValues();
+
+        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+        editor.putInt("minutes", stops_and_times.minutes);
+        editor.putInt("meters", stops_and_times.meters);
+        editor.putInt("temp_above", stops_and_times.temp_above);
+        editor.putInt("temp_below", stops_and_times.temp_below);
+        editor.putInt("minIndex", stops_and_times.getMinIndex());
+        editor.putInt("mileIndex", stops_and_times.getMileIndex());
+        editor.putInt("tempAIndex", stops_and_times.getTempAIndex());
+        editor.putInt("tempBIndex", stops_and_times.getTempBIndex());
+
+        editor.commit();
+    }
+
+    private void getSpinnerValues() {
+        // Set values from spinners to values in stops_and_times (myTaskParams object)
+        stops_and_times.minutes = Integer.parseInt(minSpinner.getSelectedItem().toString());
+        stops_and_times.miles = Double.parseDouble(mileSpinner.getSelectedItem().toString());
+            // Convert miles to meters, since Location.distanceTo() measures with meters.
+        stops_and_times.meters = stops_and_times.toMeters(stops_and_times.miles);
+            // 0 indicates temp_above value; 1 indicates temp_below value.
+        stops_and_times.parseTemp(aboveSpinner.getSelectedItem().toString(), 0);
+        stops_and_times.parseTemp(belowSpinner.getSelectedItem().toString(), 1);
+
+        // Set current index values to values in stops_and_times (myTaskParams object)
+        // This is important for setting default spinner value upon startup.
+        stops_and_times.setMinIndex(minSpinner.getSelectedItemPosition());
+        stops_and_times.setMileIndex(mileSpinner.getSelectedItemPosition());
+        stops_and_times.setTempBIndex(belowSpinner.getSelectedItemPosition());
+        stops_and_times.setTempAIndex(aboveSpinner.getSelectedItemPosition());
     }
 
     /**
@@ -402,4 +461,43 @@ public class MainActivity extends AppCompatActivity implements
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    private void restorePreferences() {
+        SharedPreferences settings = getPreferences(MODE_PRIVATE);
+        stops_and_times.minutes = settings.getInt("minutes", 3);
+        stops_and_times.meters = settings.getInt("meters", 500);
+        stops_and_times.temp_below = settings.getInt("temp_below", 50);
+        stops_and_times.temp_above = settings.getInt("temp_above", 90);
+        stops_and_times.setMinIndex(settings.getInt("minIndex", 2));
+        stops_and_times.setMileIndex(settings.getInt("mileIndex", 2));
+        stops_and_times.setTempAIndex(settings.getInt("tempAIndex", 4));
+        stops_and_times.setTempBIndex(settings.getInt("tempBIndex", 6));
+    }
+
+    private void initializeMinSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.one_to_ten_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        minSpinner.setAdapter(adapter);
+        minSpinner.setSelection(stops_and_times.getMinIndex());
+    }
+
+    private void initializeMileSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.decimal_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        mileSpinner.setAdapter(adapter);
+        mileSpinner.setSelection(stops_and_times.getMileIndex());
+    }
+
+    private void initializeAboveSpinner(){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.temp_above_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        aboveSpinner.setAdapter(adapter);
+        aboveSpinner.setSelection(stops_and_times.getTempAIndex());
+    }
+
+    private void initializeBelowSpinner(){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.temp_below_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        belowSpinner.setAdapter(adapter);
+        belowSpinner.setSelection(stops_and_times.getTempBIndex());
+    }
 }

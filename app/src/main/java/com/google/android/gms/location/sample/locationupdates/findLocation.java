@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,25 +29,25 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
 
         myTaskParams temp = new myTaskParams(params[0].locations, params[0].times, params[0].currentLocation, params[0].message, params[0].wasNotified);
         int size = temp.locations.size();
-        float distance = 1000;
+        float distance = params[0].meters;
         Location currentLocation = params[0].currentLocation;
         params[0].message = null;
 
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.US);
 
         //Get distance to all destinations; keep smallest distance
-        int minIndex = 0;
+        int closestStopIndex = 0;
         for(int i = 0; i < size; i++){
             if(distance > currentLocation.distanceTo(temp.locations.firstElement())) {
                 distance = currentLocation.distanceTo(temp.locations.firstElement());
-                minIndex = i;
+                closestStopIndex = i;
             }
             temp.locations.removeElementAt(0);
         }
 
         Vector<Vector<Date>> stops = new Vector<>(params[0].times);
 
-        Date date = howLong(stops, minIndex, params[0]);
+        Date date = howLong(stops, closestStopIndex, params[0]);
 
         //Format the date (time) and create a notification.
         if(date != null && !params[0].wasNotified){
@@ -61,10 +60,12 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
                     .setLights(Color.RED, 3000, 3000);
             int mNotificationId = 1;
             NotificationManager mNotifyMgr = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+
+            //IN THE FUTURE: Add actions to notification, including what happens when clicked.
+
             mNotifyMgr.notify(mNotificationId, mBuilder.build());
             params[0].wasNotified = true;
 
-            //IN THE FUTURE: Add actions to notification, including what happens when clicked.
         }
 
         return params[0].message;
@@ -81,20 +82,20 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
         //Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
     }
 
-    private Date howLong(Vector<Vector<Date>> times, int minIndex, myTaskParams params){
+    private Date howLong(Vector<Vector<Date>> times, int closestStopIndex, myTaskParams params){
 
         Calendar c = Calendar.getInstance();
         Date currentTime = c.getTime();
-        c.add(Calendar.MINUTE, 3);
+        c.add(Calendar.MINUTE, params.minutes);
         Date maxTime = c.getTime();
 
-        for(int i = 0; i < times.elementAt(minIndex).size(); i++){
-            if(currentTime.before(times.elementAt(minIndex).elementAt(i)) && maxTime.after(times.elementAt(minIndex).elementAt(i))){
-                params.whichBus = i;
-                return times.elementAt(minIndex).elementAt(i);
-            } else if (currentTime.equals(times.elementAt(minIndex).elementAt(i))){
-                params.whichBus = i;
-                return times.elementAt(minIndex).elementAt(i);
+        for(int i = 0; i < times.elementAt(closestStopIndex).size(); i++){
+            if(currentTime.before(times.elementAt(closestStopIndex).elementAt(i)) && maxTime.after(times.elementAt(closestStopIndex).elementAt(i))){
+                params.whichStop = closestStopIndex;
+                return times.elementAt(closestStopIndex).elementAt(i);
+            } else if (currentTime.equals(times.elementAt(closestStopIndex).elementAt(i))){
+                params.whichStop = closestStopIndex;
+                return times.elementAt(closestStopIndex).elementAt(i);
             }
         }
         return null;
