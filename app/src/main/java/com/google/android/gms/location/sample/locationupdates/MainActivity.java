@@ -316,18 +316,13 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onPause() {
         super.onPause();
-        // Stop location updates to save battery, but don't disconnect the GoogleApiClient object.
-        /*if (mGoogleApiClient.isConnected()) {
-            stopLocationUpdates();
-        }*/
     }
 
     @Override
     protected void onStop() {
-        //mGoogleApiClient.disconnect();
-        
         super.onStop();
     }
+
     /**
      * Runs when a GoogleApiClient object successfully connects.
      */

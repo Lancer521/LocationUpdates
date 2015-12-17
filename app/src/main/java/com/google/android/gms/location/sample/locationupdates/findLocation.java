@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
 /**
@@ -33,7 +34,7 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
         Location currentLocation = params[0].currentLocation;
         params[0].message = null;
 
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.US);
 
         //Get distance to all destinations; keep smallest distance
         int minIndex = 0;
@@ -45,16 +46,15 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
             temp.locations.removeElementAt(0);
         }
 
-        //Create 2D vector from xml arrays?
         Vector<Vector<Date>> stops = new Vector<>(params[0].times);
 
         Date date = howLong(stops, minIndex, params[0]);
 
-        //format the date (time) and create a notification.
+        //Format the date (time) and create a notification.
         if(date != null && !params[0].wasNotified){
             params[0].message = sdf.format(date);
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mContext)
-                    .setSmallIcon(R.drawable.bus_icon)
+                    .setSmallIcon(R.drawable.bus_front_icon)
                     .setContentTitle("Bus nearby!")
                     .setContentText("The bus arrives at " + params[0].getStopName() + " at " + params[0].message)
                     .setVibrate(new long[]{2000, 2000, 2000})
