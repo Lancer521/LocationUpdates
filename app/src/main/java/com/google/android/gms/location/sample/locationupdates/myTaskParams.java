@@ -14,9 +14,11 @@ public class myTaskParams {
     protected Vector<Location> locations;
     protected Vector<Vector<Date>> times;
     protected Location currentLocation;
+    protected Location previousLocation;
     protected int whichStop;
     protected String message;
     protected Boolean wasNotified;
+    protected double currentSpeed;
 
     //Preferences
     protected int minutes;
@@ -24,6 +26,8 @@ public class myTaskParams {
     protected int meters;
     protected int temp_below;
     protected int temp_above;
+    protected boolean walkingEnabled;
+    protected boolean bikingEnabled;
 
     //Spinner indices
     private int minIndex;
@@ -31,10 +35,15 @@ public class myTaskParams {
     private int tempBIndex;
     private int tempAIndex;
 
+    protected final int BIKE_MIN_SPEED = 7;
+    protected final int BIKE_MAX_SPEED = 20;
+    protected final int UPDATE_INTERVAL = 10000;
+
     public myTaskParams(){
         locations = new Vector<>();
         times = new Vector<>();
         currentLocation = null;
+        previousLocation = null;
         message = null;
         wasNotified = false;
         whichStop = -1;
@@ -43,6 +52,9 @@ public class myTaskParams {
         meters = toMeters(miles);
         temp_below = 50;
         temp_above = 90;
+        walkingEnabled = true;
+        bikingEnabled = true;
+        currentSpeed = 0.0;
     }
 
     protected int toMeters(double f) {
@@ -117,6 +129,11 @@ public class myTaskParams {
         } else if(whichTemp == 1){
             temp_below = Integer.parseInt(t);
         }
+    }
+
+    protected void getSpeed(){
+        double distance = previousLocation.distanceTo(currentLocation) * 0.000621371;
+        currentSpeed = (distance/UPDATE_INTERVAL)*3600;
     }
 
 }

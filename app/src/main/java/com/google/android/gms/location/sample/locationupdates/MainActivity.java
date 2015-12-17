@@ -16,16 +16,20 @@
 
 package com.google.android.gms.location.sample.locationupdates;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -112,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements
     protected Spinner mileSpinner;
     protected Spinner aboveSpinner;
     protected Spinner belowSpinner;
+    protected CheckedTextView walkingCheckedTextView;
+    protected CheckedTextView bikingCheckedTextView;
 
     // Labels.
     protected String mLatitudeLabel;
@@ -134,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements
     /**
      * Data members to hold bus route information
      */
-    protected myTaskParams stops_and_times = new myTaskParams();
+    protected myTaskParams myParameters = new myTaskParams();
 
 
     @Override
@@ -153,15 +159,18 @@ public class MainActivity extends AppCompatActivity implements
         mileSpinner = (Spinner) findViewById(R.id.miles_spinner);
         aboveSpinner = (Spinner) findViewById(R.id.temp_above_spinner);
         belowSpinner = (Spinner) findViewById(R.id.temp_below_spinner);
+        walkingCheckedTextView = (CheckedTextView) findViewById(R.id.walking_check_box);
+        bikingCheckedTextView = (CheckedTextView) findViewById(R.id.biking_check_box);
+
+        //Set CheckedTextView Listeners
+        setCheckedTextViewListeners();
 
         // Restore preferences
         restorePreferences();
 
-        //Initialize Spinners
-        initializeMinSpinner();
-        initializeMileSpinner();
-        initializeAboveSpinner();
-        initializeBelowSpinner();
+        //Initialize Spinners and CheckedTextViews - MUST FOLLOW restorePreferences()
+        initializeSpinners();
+        initializeCheckedTextViews();
 
         // Set labels.
         mLatitudeLabel = getResources().getString(R.string.latitude_label);
@@ -172,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements
         mLastUpdateTime = "";
 
         //Populate hard-coded vectors for time/location
-        loadSchedule.build(stops_and_times.locations, stops_and_times.times);
+        loadSchedule.build(myParameters.locations, myParameters.times);
 
         // Update values using data stored in the Bundle.
         updateValuesFromBundle(savedInstanceState);
@@ -263,9 +272,10 @@ public class MainActivity extends AppCompatActivity implements
      */
     public void startUpdatesButtonHandler(View view) {
         getSpinnerValues();
+        checkTransportMode();
 
         if (!mRequestingLocationUpdates) {
-            stops_and_times.wasNotified = false;
+            myParameters.wasNotified = false;
             mRequestingLocationUpdates = true;
             startLocationUpdates();
         }
@@ -289,34 +299,71 @@ public class MainActivity extends AppCompatActivity implements
         getSpinnerValues();
 
         SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-        editor.putInt("minutes", stops_and_times.minutes);
-        editor.putInt("meters", stops_and_times.meters);
-        editor.putInt("temp_above", stops_and_times.temp_above);
-        editor.putInt("temp_below", stops_and_times.temp_below);
-        editor.putInt("minIndex", stops_and_times.getMinIndex());
-        editor.putInt("mileIndex", stops_and_times.getMileIndex());
-        editor.putInt("tempAIndex", stops_and_times.getTempAIndex());
-        editor.putInt("tempBIndex", stops_and_times.getTempBIndex());
+        editor.putInt("minutes", myParameters.minutes);
+        editor.putInt("meters", myParameters.meters);
+        editor.putInt("temp_above", myParameters.temp_above);
+        editor.putInt("temp_below", myParameters.temp_below);
+        editor.putInt("minIndex", myParameters.getMinIndex());
+        editor.putInt("mileIndex", myParameters.getMileIndex());
+        editor.putInt("tempAIndex", myParameters.getTempAIndex());
+        editor.putInt("tempBIndex", myParameters.getTempBIndex());
+        editor.putBoolean("walking", myParameters.walkingEnabled);
+        editor.putBoolean("biking", myParameters.bikingEnabled);
 
-        editor.commit();
+        editor.apply(); //alternatively can use commit, which writes changes immediately
+        Toast.makeText(this, "Your preferences have been saved", Toast.LENGTH_SHORT).show();
+    }
+
+    public void cvtdButtonHandler(View view){
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cvtdbus.org/MIRouteMapsNSchedules/allroutes.php"));
+        startActivity(i);
     }
 
     private void getSpinnerValues() {
-        // Set values from spinners to values in stops_and_times (myTaskParams object)
-        stops_and_times.minutes = Integer.parseInt(minSpinner.getSelectedItem().toString());
-        stops_and_times.miles = Double.parseDouble(mileSpinner.getSelectedItem().toString());
-            // Convert miles to meters, since Location.distanceTo() measures with meters.
-        stops_and_times.meters = stops_and_times.toMeters(stops_and_times.miles);
-            // 0 indicates temp_above value; 1 indicates temp_below value.
-        stops_and_times.parseTemp(aboveSpinner.getSelectedItem().toString(), 0);
-        stops_and_times.parseTemp(belowSpinner.getSelectedItem().toString(), 1);
 
-        // Set current index values to values in stops_and_times (myTaskParams object)
+        // Set values from spinners to values in myParameters (myTaskParams object)
+        myParameters.minutes = Integer.parseInt(minSpinner.getSelectedItem().toString());
+        myParameters.miles = Double.parseDouble(mileSpinner.getSelectedItem().toString());
+            // Convert miles to meters, since Location.distanceTo() measures with meters.
+        myParameters.meters = myParameters.toMeters(myParameters.miles);
+            // 0 indicates temp_above value; 1 indicates temp_below value.
+        myParameters.parseTemp(aboveSpinner.getSelectedItem().toString(), 0);
+        myParameters.parseTemp(belowSpinner.getSelectedItem().toString(), 1);
+
+        // Set current index values to values in myParameters (myTaskParams object)
         // This is important for setting default spinner value upon startup.
-        stops_and_times.setMinIndex(minSpinner.getSelectedItemPosition());
-        stops_and_times.setMileIndex(mileSpinner.getSelectedItemPosition());
-        stops_and_times.setTempBIndex(belowSpinner.getSelectedItemPosition());
-        stops_and_times.setTempAIndex(aboveSpinner.getSelectedItemPosition());
+        myParameters.setMinIndex(minSpinner.getSelectedItemPosition());
+        myParameters.setMileIndex(mileSpinner.getSelectedItemPosition());
+        myParameters.setTempBIndex(belowSpinner.getSelectedItemPosition());
+        myParameters.setTempAIndex(aboveSpinner.getSelectedItemPosition());
+    }
+
+    private void setCheckedTextViewListeners() {
+        walkingCheckedTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(walkingCheckedTextView.isChecked()) {
+                    myParameters.walkingEnabled = false;
+                    walkingCheckedTextView.setChecked(false);
+                } else {
+                    myParameters.walkingEnabled = true;
+                    walkingCheckedTextView.setChecked(true);
+                }
+            }
+        });
+
+        bikingCheckedTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bikingCheckedTextView.isChecked()) {
+                    myParameters.bikingEnabled = false;
+                    bikingCheckedTextView.setChecked(false);
+                } else {
+                    myParameters.bikingEnabled = true;
+                    bikingCheckedTextView.setChecked(true);
+                }
+            }
+        });
     }
 
     /**
@@ -418,19 +465,19 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onLocationChanged(Location location) {
+        myParameters.previousLocation = mCurrentLocation;
+        myParameters.currentLocation = location;
         mCurrentLocation = location;
         mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
         updateUI();
 
-        stops_and_times.currentLocation = mCurrentLocation;
-
         //create and execute Asynchronous process:
-        new findLocation(MainActivity.this).execute(stops_and_times);
+        new findLocation(MainActivity.this).execute(myParameters);
 
         /*Toast.makeText(this, getResources().getString(R.string.location_updated_message),
                 Toast.LENGTH_SHORT).show();*/
 
-        if(stops_and_times.wasNotified) {
+        if(myParameters.wasNotified) {
             mRequestingLocationUpdates = false;
             stopLocationUpdates();
         }
@@ -463,41 +510,59 @@ public class MainActivity extends AppCompatActivity implements
 
     private void restorePreferences() {
         SharedPreferences settings = getPreferences(MODE_PRIVATE);
-        stops_and_times.minutes = settings.getInt("minutes", 3);
-        stops_and_times.meters = settings.getInt("meters", 500);
-        stops_and_times.temp_below = settings.getInt("temp_below", 50);
-        stops_and_times.temp_above = settings.getInt("temp_above", 90);
-        stops_and_times.setMinIndex(settings.getInt("minIndex", 2));
-        stops_and_times.setMileIndex(settings.getInt("mileIndex", 2));
-        stops_and_times.setTempAIndex(settings.getInt("tempAIndex", 4));
-        stops_and_times.setTempBIndex(settings.getInt("tempBIndex", 6));
+        myParameters.minutes = settings.getInt("minutes", 3);
+        myParameters.meters = settings.getInt("meters", 500);
+        myParameters.temp_below = settings.getInt("temp_below", 50);
+        myParameters.temp_above = settings.getInt("temp_above", 90);
+        myParameters.setMinIndex(settings.getInt("minIndex", 2));
+        myParameters.setMileIndex(settings.getInt("mileIndex", 2));
+        myParameters.setTempAIndex(settings.getInt("tempAIndex", 4));
+        myParameters.setTempBIndex(settings.getInt("tempBIndex", 6));
+        myParameters.walkingEnabled = settings.getBoolean("walking", true);
+        myParameters.bikingEnabled = settings.getBoolean("biking", true);
     }
 
-    private void initializeMinSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.one_to_ten_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        minSpinner.setAdapter(adapter);
-        minSpinner.setSelection(stops_and_times.getMinIndex());
+    private void initializeSpinners() {
+
+        //Minute Spinner
+        ArrayAdapter<CharSequence> minAdapter = ArrayAdapter.createFromResource(this, R.array.one_to_ten_array, R.layout.spinner_item);
+        minAdapter.setDropDownViewResource(R.layout.spinner_item);
+        minSpinner.setAdapter(minAdapter);
+        minSpinner.setSelection(myParameters.getMinIndex());
+
+        //Mile Spinner
+        ArrayAdapter<CharSequence> mileAdapter = ArrayAdapter.createFromResource(this, R.array.decimal_array, R.layout.spinner_item);
+        mileAdapter.setDropDownViewResource(R.layout.spinner_item);
+        mileSpinner.setAdapter(mileAdapter);
+        mileSpinner.setSelection(myParameters.getMileIndex());
+
+        //Above Spinner
+        ArrayAdapter<CharSequence> aboveAdapter = ArrayAdapter.createFromResource(this, R.array.temp_above_array, R.layout.spinner_item);
+        aboveAdapter.setDropDownViewResource(R.layout.spinner_item);
+        aboveSpinner.setAdapter(aboveAdapter);
+        aboveSpinner.setSelection(myParameters.getTempAIndex());
+
+        //Below Spinner
+        ArrayAdapter<CharSequence> belowAdapter = ArrayAdapter.createFromResource(this, R.array.temp_below_array, R.layout.spinner_item);
+        belowAdapter.setDropDownViewResource(R.layout.spinner_item);
+        belowSpinner.setAdapter(belowAdapter);
+        belowSpinner.setSelection(myParameters.getTempBIndex());
     }
 
-    private void initializeMileSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.decimal_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        mileSpinner.setAdapter(adapter);
-        mileSpinner.setSelection(stops_and_times.getMileIndex());
+    private void initializeCheckedTextViews() {
+        walkingCheckedTextView.setChecked(myParameters.walkingEnabled);
+        bikingCheckedTextView.setChecked(myParameters.bikingEnabled);
     }
 
-    private void initializeAboveSpinner(){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.temp_above_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        aboveSpinner.setAdapter(adapter);
-        aboveSpinner.setSelection(stops_and_times.getTempAIndex());
-    }
-
-    private void initializeBelowSpinner(){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.temp_below_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        belowSpinner.setAdapter(adapter);
-        belowSpinner.setSelection(stops_and_times.getTempBIndex());
+    private boolean checkTransportMode(){
+        if(myParameters.currentSpeed >= myParameters.BIKE_MAX_SPEED) return false;
+        if(myParameters.walkingEnabled){
+            if(myParameters.bikingEnabled)
+                return true;
+            if(myParameters.currentSpeed >= myParameters.BIKE_MIN_SPEED)
+                return false;
+            return true;
+        }
+        return false;
     }
 }

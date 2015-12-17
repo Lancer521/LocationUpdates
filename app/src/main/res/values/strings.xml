@@ -33,4 +33,6 @@
     <string name="temp_above_text">above</string>
     <string name="temp_below_text">below</string>
     <string name="degree_symbol">\u2109</string>
+    <string name="transport_mode">I am:</string>
+    <string name="see_routes">See CVTD System Map</string>
 </resources>

@@ -58,7 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
 
         <TextView  android:id="@+id/wait_time_text"
             android:layout_width="wrap_content"
@@ -153,9 +154,64 @@
         android:baselineAligned="false"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <TextView android:id="@+id/transport_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transport_mode"
+                android:textSize="24sp"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <CheckedTextView
+                android:id="@+id/walking_check_box"
+                android:layout_width="match_parent"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:gravity="center_vertical"
+                android:text="Walking"
+                android:textSize="24sp"
+                android:textColor="#ffffff" />
+
+            <CheckedTextView
+                android:id="@+id/biking_check_box"
+                android:layout_width="match_parent"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:gravity="center_vertical"
+                android:text="Biking"
+                android:textSize="24sp"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="65dp"
             android:layout_marginRight="65dp"
@@ -164,30 +220,52 @@
             android:onClick="savePreferencesButtonHandler"
             android:text="@string/save_preferences" />
 
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="65dp"
+            android:enabled="true"
+            android:gravity="center"
+            android:onClick="cvtdButtonHandler"
+            android:text="@string/see_routes" />
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:baselineAligned="true"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|bottom">
 
-    <TextView
-        android:id="@+id/latitude_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/small_margin"
-        android:layout_marginStart="@dimen/small_margin"
-        android:textSize="@dimen/default_text_size" />
+        <TextView
+            android:id="@+id/latitude_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:textSize="@dimen/default_text_size"
+            android:textColor="#ffffff" />
 
-    <TextView
-        android:id="@+id/longitude_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/small_margin"
-        android:layout_marginStart="@dimen/small_margin"
-        android:textSize="@dimen/default_text_size" />
+        <TextView
+            android:id="@+id/longitude_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:textSize="@dimen/default_text_size"
+            android:textColor="#ffffff" />
 
-    <TextView
-        android:id="@+id/last_update_time_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/small_margin"
-        android:layout_marginStart="@dimen/small_margin"
-        android:textSize="@dimen/default_text_size" />
+        <TextView
+            android:id="@+id/last_update_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:textSize="@dimen/default_text_size"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
 </LinearLayout>

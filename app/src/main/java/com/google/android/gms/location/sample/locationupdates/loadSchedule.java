@@ -83,10 +83,10 @@ public class loadSchedule {
         stops.add(temp);
 
         /**THIS LOCATION IS STRICTLY FOR TESTING PURPOSES**/
-        temp = new Location("Testing from Institute");
+        /*temp = new Location("Testing from Institute");
         temp.setLatitude(41.741978);
         temp.setLongitude(-111.809861);
-        stops.add(temp);
+        stops.add(temp);*/
         /**************************************************/
     }
 
@@ -164,9 +164,9 @@ public class loadSchedule {
         transit_time.set(currYear, currMonth, currDay, 7, 22, 0);
 
         /***TEST_TIME IS FOR TESTING PURPOSES ONLY***/
-        Calendar test_time = Calendar.getInstance();
+        /*Calendar test_time = Calendar.getInstance();
         test_time.add(Calendar.MINUTE, 4);
-        times.elementAt(10).add(test_time.getTime());
+        times.elementAt(10).add(test_time.getTime());*/
         /********************************************/
 
         times.elementAt(3).add(edu_time.getTime());
