@@ -49,14 +49,6 @@ public class myTaskParams {
         return (int)(f * 1609.34);
     }
 
-    public myTaskParams(Vector<Location> l, Vector<Vector<Date>> t, Location cl, String m, Boolean w){
-        locations = new Vector<>(l);
-        times = new Vector<>(t);
-        currentLocation = cl;
-        message = m;
-        wasNotified = w;
-    }
-
     protected String getStopName(){
         switch(whichStop){
             case 0:
@@ -80,7 +72,7 @@ public class myTaskParams {
             case 9:
                 return "Cache County School District";
             case 10:
-                return "Test case";
+                return "Test Stop";
             default:
                 return null;
         }

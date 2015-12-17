@@ -27,8 +27,8 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
     @Override
     protected String doInBackground(myTaskParams... params) {
 
-        myTaskParams temp = new myTaskParams(params[0].locations, params[0].times, params[0].currentLocation, params[0].message, params[0].wasNotified);
-        int size = temp.locations.size();
+        Vector<Location> temp = new Vector<>(params[0].locations);
+        int size = temp.size();
         float distance = params[0].meters;
         Location currentLocation = params[0].currentLocation;
         params[0].message = null;
@@ -38,11 +38,11 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
         //Get distance to all destinations; keep smallest distance
         int closestStopIndex = 0;
         for(int i = 0; i < size; i++){
-            if(distance > currentLocation.distanceTo(temp.locations.firstElement())) {
-                distance = currentLocation.distanceTo(temp.locations.firstElement());
+            if(distance > currentLocation.distanceTo(temp.firstElement())) {
+                distance = currentLocation.distanceTo(temp.firstElement());
                 closestStopIndex = i;
             }
-            temp.locations.removeElementAt(0);
+            temp.removeElementAt(0);
         }
 
         Vector<Vector<Date>> stops = new Vector<>(params[0].times);
