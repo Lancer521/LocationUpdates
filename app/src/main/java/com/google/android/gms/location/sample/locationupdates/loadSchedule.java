@@ -163,11 +163,11 @@ public class loadSchedule {
         Calendar transit_time = Calendar.getInstance();
         transit_time.set(currYear, currMonth, currDay, 7, 22, 0);
 
-        /***TEST_TIME IS FOR TESTING PURPOSES ONLY***/
+        /***TEST_TIME IS STRICTLY FOR TESTING PURPOSES ***/
         /*Calendar test_time = Calendar.getInstance();
         test_time.add(Calendar.MINUTE, 4);
         times.elementAt(10).add(test_time.getTime());*/
-        /********************************************/
+        /*************************************************/
 
         times.elementAt(3).add(edu_time.getTime());
         times.elementAt(0).add(transit_time.getTime());
