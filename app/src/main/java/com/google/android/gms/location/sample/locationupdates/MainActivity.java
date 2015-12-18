@@ -555,6 +555,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private boolean checkTransportMode(){
+        myParameters.getSpeed();
         if(myParameters.currentSpeed >= myParameters.BIKE_MAX_SPEED) return false;
         if(myParameters.walkingEnabled){
             if(myParameters.bikingEnabled)

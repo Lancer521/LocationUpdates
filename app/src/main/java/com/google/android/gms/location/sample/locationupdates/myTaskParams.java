@@ -132,6 +132,7 @@ public class myTaskParams {
     }
 
     protected void getSpeed(){
+        if(previousLocation == null) return;
         double distance = previousLocation.distanceTo(currentLocation) * 0.000621371;
         currentSpeed = (distance/UPDATE_INTERVAL)*3600;
     }
