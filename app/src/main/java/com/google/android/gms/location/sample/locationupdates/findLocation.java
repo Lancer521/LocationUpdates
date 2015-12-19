@@ -46,14 +46,13 @@ public class findLocation extends AsyncTask<myTaskParams, Integer, String>{
         }
 
         Vector<Vector<Date>> stops = new Vector<>(params[0].times);
-
         Date date = howLong(stops, closestStopIndex, params[0]);
 
         //Format the date (time) and create a notification.
         if(date != null && !params[0].wasNotified){
             params[0].message = sdf.format(date);
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mContext)
-                    .setSmallIcon(R.drawable.bus_front_icon)
+                    .setSmallIcon(R.drawable.bus_front_blue)
                     .setContentTitle("Bus nearby!")
                     .setContentText("The bus arrives at " + params[0].getStopName() + " at " + params[0].message)
                     .setVibrate(new long[]{2000, 2000, 2000})
