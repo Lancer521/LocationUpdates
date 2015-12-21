@@ -1,3 +1,8 @@
+Find My Bus
+===========
+
+Built on top of the Location Updates sample code provided by Google.  Notifies user when a bus is within a predefined distance and time from the nearest bus stop.  Allows user to define the time they are willing to wait for the bus, as well as how far they're willing to go to the bus stop where the bus is soon to arrive.  Below is the information from the README file in Google's LocationUpdates code.  Proper credit is given in the code.  I don't take credit for any of the code implemented by Google, though I do take credit for the extensive modification that I made to it.
+
 Location Updates
 ================
 
