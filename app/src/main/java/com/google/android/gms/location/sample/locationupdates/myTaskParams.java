@@ -57,8 +57,8 @@ public class myTaskParams {
         currentSpeed = 0.0;
     }
 
-    protected int toMeters(double f) {
-        return (int)(f * 1609.34);
+    protected int toMeters(double d) {
+        return (int)(d * 1609.34);
     }
 
     protected String getStopName(){

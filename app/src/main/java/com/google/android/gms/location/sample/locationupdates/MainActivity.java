@@ -16,11 +16,15 @@
 
 package com.google.android.gms.location.sample.locationupdates;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -112,12 +116,6 @@ public class MainActivity extends AppCompatActivity implements
     protected TextView mLastUpdateTimeTextView;
     protected TextView mLatitudeTextView;
     protected TextView mLongitudeTextView;
-    protected Spinner minSpinner;
-    protected Spinner mileSpinner;
-    protected Spinner aboveSpinner;
-    protected Spinner belowSpinner;
-    protected CheckedTextView walkingCheckedTextView;
-    protected CheckedTextView bikingCheckedTextView;
 
     // Labels.
     protected String mLatitudeLabel;
@@ -135,12 +133,18 @@ public class MainActivity extends AppCompatActivity implements
      */
     protected String mLastUpdateTime;
 
-    protected Object[] array = new Object[]{};
-
     /**
      * Data members to hold bus route information
      */
     protected myTaskParams myParameters = new myTaskParams();
+
+    private SharedPreferences settings = null;
+    private SharedPreferences.OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            restorePreferences();
+        }
+    };
 
 
     @Override
@@ -155,22 +159,9 @@ public class MainActivity extends AppCompatActivity implements
         mLongitudeTextView = (TextView) findViewById(R.id.longitude_text);
         mLastUpdateTimeTextView = (TextView) findViewById(R.id.last_update_time_text);
 
-        minSpinner = (Spinner) findViewById(R.id.minutes_spinner);
-        mileSpinner = (Spinner) findViewById(R.id.miles_spinner);
-        aboveSpinner = (Spinner) findViewById(R.id.temp_above_spinner);
-        belowSpinner = (Spinner) findViewById(R.id.temp_below_spinner);
-        walkingCheckedTextView = (CheckedTextView) findViewById(R.id.walking_check_box);
-        bikingCheckedTextView = (CheckedTextView) findViewById(R.id.biking_check_box);
-
-        //Set CheckedTextView Listeners
-        setCheckedTextViewListeners();
-
         // Restore preferences
         restorePreferences();
-
-        //Initialize Spinners and CheckedTextViews - MUST FOLLOW restorePreferences()
-        initializeSpinners();
-        initializeCheckedTextViews();
+        settings.registerOnSharedPreferenceChangeListener(listener);
 
         // Set labels.
         mLatitudeLabel = getResources().getString(R.string.latitude_label);
@@ -179,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements
 
         mRequestingLocationUpdates = false;
         mLastUpdateTime = "";
+
 
         //Populate hard-coded vectors for time/location
         loadSchedule.build(myParameters.locations, myParameters.times);
@@ -271,7 +263,6 @@ public class MainActivity extends AppCompatActivity implements
      * updates have already been requested.
      */
     public void startUpdatesButtonHandler(View view) {
-        getSpinnerValues();
         checkTransportMode();
 
         if (!mRequestingLocationUpdates) {
@@ -295,75 +286,14 @@ public class MainActivity extends AppCompatActivity implements
     /**
      * Save preferences using Shared Preferences
      */
-    public void savePreferencesButtonHandler(View view){
-        getSpinnerValues();
-
-        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-        editor.putInt("minutes", myParameters.minutes);
-        editor.putInt("meters", myParameters.meters);
-        editor.putInt("temp_above", myParameters.temp_above);
-        editor.putInt("temp_below", myParameters.temp_below);
-        editor.putInt("minIndex", myParameters.getMinIndex());
-        editor.putInt("mileIndex", myParameters.getMileIndex());
-        editor.putInt("tempAIndex", myParameters.getTempAIndex());
-        editor.putInt("tempBIndex", myParameters.getTempBIndex());
-        editor.putBoolean("walking", myParameters.walkingEnabled);
-        editor.putBoolean("biking", myParameters.bikingEnabled);
-
-        editor.apply(); //alternatively can use commit, which writes changes immediately
-        Toast.makeText(this, "Your preferences have been saved", Toast.LENGTH_SHORT).show();
+    public void editPreferencesButtonHandler(View view){
+        Intent i = new Intent(this.getApplicationContext(), PrefsActivity.class);
+        startActivity(i);
     }
 
     public void cvtdButtonHandler(View view){
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cvtdbus.org/MIRouteMapsNSchedules/allroutes.php"));
         startActivity(i);
-    }
-
-    private void getSpinnerValues() {
-
-        // Set values from spinners to values in myParameters (myTaskParams object)
-        myParameters.minutes = Integer.parseInt(minSpinner.getSelectedItem().toString());
-        myParameters.miles = Double.parseDouble(mileSpinner.getSelectedItem().toString());
-            // Convert miles to meters, since Location.distanceTo() measures with meters.
-        myParameters.meters = myParameters.toMeters(myParameters.miles);
-            // 0 indicates temp_above value; 1 indicates temp_below value.
-        myParameters.parseTemp(aboveSpinner.getSelectedItem().toString(), 0);
-        myParameters.parseTemp(belowSpinner.getSelectedItem().toString(), 1);
-
-        // Set current index values to values in myParameters (myTaskParams object)
-        // This is important for setting default spinner value upon startup.
-        myParameters.setMinIndex(minSpinner.getSelectedItemPosition());
-        myParameters.setMileIndex(mileSpinner.getSelectedItemPosition());
-        myParameters.setTempBIndex(belowSpinner.getSelectedItemPosition());
-        myParameters.setTempAIndex(aboveSpinner.getSelectedItemPosition());
-    }
-
-    private void setCheckedTextViewListeners() {
-        walkingCheckedTextView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if(walkingCheckedTextView.isChecked()) {
-                    myParameters.walkingEnabled = false;
-                    walkingCheckedTextView.setChecked(false);
-                } else {
-                    myParameters.walkingEnabled = true;
-                    walkingCheckedTextView.setChecked(true);
-                }
-            }
-        });
-
-        bikingCheckedTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(bikingCheckedTextView.isChecked()) {
-                    myParameters.bikingEnabled = false;
-                    bikingCheckedTextView.setChecked(false);
-                } else {
-                    myParameters.bikingEnabled = true;
-                    bikingCheckedTextView.setChecked(true);
-                }
-            }
-        });
     }
 
     /**
@@ -474,9 +404,6 @@ public class MainActivity extends AppCompatActivity implements
         //create and execute Asynchronous process:
         new findLocation(MainActivity.this).execute(myParameters);
 
-        /*Toast.makeText(this, getResources().getString(R.string.location_updated_message),
-                Toast.LENGTH_SHORT).show();*/
-
         if(myParameters.wasNotified) {
             mRequestingLocationUpdates = false;
             stopLocationUpdates();
@@ -509,49 +436,14 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void restorePreferences() {
-        SharedPreferences settings = getPreferences(MODE_PRIVATE);
-        myParameters.minutes = settings.getInt("minutes", 3);
-        myParameters.meters = settings.getInt("meters", 500);
-        myParameters.temp_below = settings.getInt("temp_below", 50);
-        myParameters.temp_above = settings.getInt("temp_above", 90);
-        myParameters.setMinIndex(settings.getInt("minIndex", 2));
-        myParameters.setMileIndex(settings.getInt("mileIndex", 2));
-        myParameters.setTempAIndex(settings.getInt("tempAIndex", 4));
-        myParameters.setTempBIndex(settings.getInt("tempBIndex", 6));
-        myParameters.walkingEnabled = settings.getBoolean("walking", true);
-        myParameters.bikingEnabled = settings.getBoolean("biking", true);
-    }
-
-    private void initializeSpinners() {
-
-        //Minute Spinner
-        ArrayAdapter<CharSequence> minAdapter = ArrayAdapter.createFromResource(this, R.array.one_to_ten_array, R.layout.spinner_item);
-        minAdapter.setDropDownViewResource(R.layout.spinner_item);
-        minSpinner.setAdapter(minAdapter);
-        minSpinner.setSelection(myParameters.getMinIndex());
-
-        //Mile Spinner
-        ArrayAdapter<CharSequence> mileAdapter = ArrayAdapter.createFromResource(this, R.array.decimal_array, R.layout.spinner_item);
-        mileAdapter.setDropDownViewResource(R.layout.spinner_item);
-        mileSpinner.setAdapter(mileAdapter);
-        mileSpinner.setSelection(myParameters.getMileIndex());
-
-        //Above Spinner
-        ArrayAdapter<CharSequence> aboveAdapter = ArrayAdapter.createFromResource(this, R.array.temp_above_array, R.layout.spinner_item);
-        aboveAdapter.setDropDownViewResource(R.layout.spinner_item);
-        aboveSpinner.setAdapter(aboveAdapter);
-        aboveSpinner.setSelection(myParameters.getTempAIndex());
-
-        //Below Spinner
-        ArrayAdapter<CharSequence> belowAdapter = ArrayAdapter.createFromResource(this, R.array.temp_below_array, R.layout.spinner_item);
-        belowAdapter.setDropDownViewResource(R.layout.spinner_item);
-        belowSpinner.setAdapter(belowAdapter);
-        belowSpinner.setSelection(myParameters.getTempBIndex());
-    }
-
-    private void initializeCheckedTextViews() {
-        walkingCheckedTextView.setChecked(myParameters.walkingEnabled);
-        bikingCheckedTextView.setChecked(myParameters.bikingEnabled);
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        //settings = getPreferences(MODE_PRIVATE);
+        myParameters.minutes = Integer.parseInt(settings.getString("minutes_values", Integer.toString(myParameters.minutes)));
+        myParameters.meters = myParameters.toMeters(Float.parseFloat(settings.getString("miles", Double.toString(myParameters.miles))));
+        myParameters.temp_below = Integer.parseInt(settings.getString("temp_below_values", Integer.toString(myParameters.temp_below)));
+        myParameters.temp_above = Integer.parseInt(settings.getString("temp_above_values", Integer.toString(myParameters.temp_above)));
+        myParameters.walkingEnabled = settings.getBoolean("walking", myParameters.walkingEnabled);
+        myParameters.bikingEnabled = settings.getBoolean("biking", myParameters.bikingEnabled);
     }
 
     private boolean checkTransportMode(){

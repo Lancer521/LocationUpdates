@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="minutes">
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>3 minutes</item>
+        <item>4 minutes</item>
+        <item>5 minutes</item>
+        <item>6 minutes</item>
+        <item>7 minutes</item>
+        <item>8 minutes</item>
+        <item>9 minutes</item>
+        <item>10 minutes</item>
+    </string-array>
+
+    <string-array name="minutesValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="miles">
+        <item>.1 miles</item>
+        <item>.2 miles</item>
+        <item>.3 miles</item>
+        <item>.4 miles</item>
+        <item>.5 miles</item>
+        <item>.6 miles</item>
+        <item>.7 miles</item>
+        <item>.8 miles</item>
+        <item>.9 miles</item>
+        <item>1 mile</item>
+        <item>2 miles</item>
+        <item>3 miles</item>
+    </string-array>
+
+    <string-array name="milesValues">
+        <item>.1</item>
+        <item>.2</item>
+        <item>.3</item>
+        <item>.4</item>
+        <item>.5</item>
+        <item>.6</item>
+        <item>.7</item>
+        <item>.8</item>
+        <item>.9</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="temp_below">
+        <item>60 \u2109</item>
+        <item>55 \u2109</item>
+        <item>50 \u2109</item>
+        <item>45 \u2109</item>
+        <item>40 \u2109</item>
+        <item>35 \u2109</item>
+        <item>30 \u2109</item>
+        <item>25 \u2109</item>
+        <item>20 \u2109</item>
+        <item>15 \u2109</item>
+        <item>10 \u2109</item>
+        <item>5 \u2109</item>
+        <item>0 \u2109</item>
+    </string-array>
+
+    <string-array name="temp_below_values">
+        <item>60</item>
+        <item>55</item>
+        <item>50</item>
+        <item>45</item>
+        <item>40</item>
+        <item>35</item>
+        <item>30</item>
+        <item>25</item>
+        <item>20</item>
+        <item>15</item>
+        <item>10</item>
+        <item>5 </item>
+        <item>0 </item>
+    </string-array>
+
+    <string-array name="temp_above">
+        <item>60 \u2109</item>
+        <item>65 \u2109</item>
+        <item>70 \u2109</item>
+        <item>75 \u2109</item>
+        <item>80 \u2109</item>
+        <item>85 \u2109</item>
+        <item>90 \u2109</item>
+        <item>95 \u2109</item>
+        <item>100 \u2109</item>
+    </string-array>
+
+    <string-array name="temp_above_values">
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+    </string-array>
+
+</resources>

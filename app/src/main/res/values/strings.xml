@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright 2014 Google, Inc
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@
 
     <string name="start_updates">Start updates</string>
     <string name="stop_updates">Stop updates</string>
-    <string name="save_preferences">Save Preferences</string>
+    <string name="save_preferences">Edit Preferences</string>
     <string name="location_updated_message">Location updated</string>
 
     <string name="wait_time_text">The bus is within:</string>
@@ -35,4 +34,7 @@
     <string name="degree_symbol">\u2109</string>
     <string name="transport_mode">I am:</string>
     <string name="see_routes">See CVTD System Map</string>
+    <string name="min_default_value">3</string>
+    <string name="mile_default_value">.3</string>
+    <string name="prefs_name">Notify me if:</string>
 </resources>

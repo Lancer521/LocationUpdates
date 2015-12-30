@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:title="Notify me if:">
+
+    <PreferenceCategory
+        android:title="Time and distance"
+        android:key="minutes_miles_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:key="minutes_values"
+            android:title="The bus will arrive within:"
+            android:summary="%s"
+            android:defaultValue="@string/min_default_value"
+            android:entries="@array/minutes"
+            android:entryValues="@array/minutesValues"
+            />
+
+        <ListPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:key="miles"
+            android:title="The bus stop is within:"
+            android:summary="%s"
+            android:defaultValue="@string/mile_default_value"
+            android:entries="@array/miles"
+            android:entryValues="@array/milesValues"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Temperature"
+        android:key="temperature_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:key="temp_below_values"
+            android:title="The temperature is below:"
+            android:summary="%s"
+            android:defaultValue="40"
+            android:entries="@array/temp_below"
+            android:entryValues="@array/temp_below_values"
+            />
+
+        <ListPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:key="temp_above_values"
+            android:title="The temperature is above:"
+            android:summary="%s"
+            android:defaultValue="90"
+            android:entries="@array/temp_above"
+            android:entryValues="@array/temp_above_values"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Transportation mode"
+        android:key="temperature_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SwitchPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:key="walking"
+            android:title="I am walking"
+            android:defaultValue="true"
+            />
+
+        <SwitchPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:key="biking"
+            android:title="I am biking"
+            android:defaultValue="true"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
