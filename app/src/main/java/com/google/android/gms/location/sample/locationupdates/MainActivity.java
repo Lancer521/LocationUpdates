@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,16 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.sample.locationupdates.DomainObjects.XMLFeed;
+import com.google.gson.Gson;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -67,7 +77,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity implements
     ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
 
-  protected static final String TAG = "location-updates-sample";
+  protected static final String LOG_TAG = "location-updates-sample";
 
   /**
    * The desired interval for location updates. Inexact. Updates may be more or less frequent.
@@ -166,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements
     //Populate hard-coded vectors for time/location
     LoadSchedule.build(myParameters.locations, myParameters.times);
 
+    //Get routes from XML feed
+    new GetXMLFeedAsyncTask().execute();
+
     // Update values using data stored in the Bundle.
     updateValuesFromBundle(savedInstanceState);
 
@@ -181,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements
    * @param savedInstanceState The activity state saved in the Bundle.
    */
   private void updateValuesFromBundle(Bundle savedInstanceState) {
-    Log.i(TAG, "Updating values from bundle");
+    Log.i(LOG_TAG, "Updating values from bundle");
     if (savedInstanceState != null) {
       // Update the value of mRequestingLocationUpdates from the Bundle, and make sure that
       // the Start Updates and Stop Updates buttons are correctly enabled or disabled.
@@ -211,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements
    * LocationServices API.
    */
   protected synchronized void buildGoogleApiClient() {
-    Log.i(TAG, "Building GoogleApiClient");
+    Log.i(LOG_TAG, "Building GoogleApiClient");
     mGoogleApiClient = new GoogleApiClient.Builder(this)
                            .addConnectionCallbacks(this)
                            .addOnConnectionFailedListener(this)
@@ -355,7 +368,7 @@ public class MainActivity extends AppCompatActivity implements
    */
   @Override
   public void onConnected(Bundle connectionHint) {
-    Log.i(TAG, "Connected to GoogleApiClient");
+    Log.i(LOG_TAG, "Connected to GoogleApiClient");
 
     // If the initial location was never previously requested, we use
     // FusedLocationApi.getLastLocation() to get it. If it was previously requested, we store
@@ -405,7 +418,7 @@ public class MainActivity extends AppCompatActivity implements
   public void onConnectionSuspended(int cause) {
     // The connection to Google Play services was lost for some reason. We call connect() to
     // attempt to re-establish the connection.
-    Log.i(TAG, "Connection suspended");
+    Log.i(LOG_TAG, "Connection suspended");
     mGoogleApiClient.connect();
   }
 
@@ -413,7 +426,7 @@ public class MainActivity extends AppCompatActivity implements
   public void onConnectionFailed(ConnectionResult result) {
     // Refer to the javadoc for ConnectionResult to see what error codes might be returned in
     // onConnectionFailed.
-    Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
+    Log.i(LOG_TAG, "Connection failed: ConnectionResult.getErrorCode() = " + result.getErrorCode());
   }
 
   /**
@@ -452,5 +465,36 @@ public class MainActivity extends AppCompatActivity implements
       return true;
     }
     return false;
+  }
+
+  private class GetXMLFeedAsyncTask extends AsyncTask<Void, Void, Void> {
+
+    private final OkHttpClient okClient = new OkHttpClient();
+    private final Gson gson = new Gson();
+
+    private XMLFeed routes;
+
+    @Override
+    protected Void doInBackground(Void... params) {
+      try {
+        Request request = new Request.Builder().url(AppConfig.CVTD_FEED_URL).build();
+        Response response = okClient.newCall(request).execute();
+
+        String xml = response.body().string();
+
+        JSONObject jsonObj = XML.toJSONObject(xml);
+
+        routes = gson.fromJson(jsonObj.toString(), XMLFeed.class);
+        Log.d(LOG_TAG, "GETTING ROUTE FROM FEED AND CONVERTING TO JSON WAS SUCCESSFUL");
+
+      } catch (IOException e) {
+        Log.e(LOG_TAG, "IOException in getRoutesFromServer");
+        e.printStackTrace();
+      } catch (JSONException e) {
+        Log.e(LOG_TAG, "JSONException in getRoutesFromServer");
+        e.printStackTrace();
+      }
+      return null;
+    }
   }
 }
