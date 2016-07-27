@@ -14,6 +14,7 @@ package com.google.android.gms.location.sample.locationupdates;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -41,9 +42,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.util.Date;
+
+/**
+ * Copyright 2016 Tylen Smith
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
 
 /**
  * This app is built upon sample code provided by Google at:
@@ -78,6 +99,11 @@ public class MainActivity extends AppCompatActivity implements
     ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
 
   protected static final String LOG_TAG = "location-updates-sample";
+
+  /**
+   * The Package Name for global use
+   */
+  public static String PACKAGE_NAME;
 
   /**
    * The desired interval for location updates. Inexact. Updates may be more or less frequent.
@@ -153,6 +179,8 @@ public class MainActivity extends AppCompatActivity implements
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_activity);
 
+    PACKAGE_NAME = getApplicationContext().getPackageName();
+
     // Locate the UI widgets.
     mStartUpdatesButton = (Button) findViewById(R.id.start_updates_button);
     mStopUpdatesButton = (Button) findViewById(R.id.stop_updates_button);
@@ -171,7 +199,6 @@ public class MainActivity extends AppCompatActivity implements
 
     mRequestingLocationUpdates = false;
     mLastUpdateTime = "";
-
 
     //Populate hard-coded vectors for time/location
     LoadSchedule.build(myParameters.locations, myParameters.times);
@@ -467,6 +494,52 @@ public class MainActivity extends AppCompatActivity implements
     return false;
   }
 
+  private File saveAssetsToDevice() {
+    AssetManager assetManager = getAssets();
+    String[] files = null;
+    File stopFile = null;
+    try {
+      files = assetManager.list("");
+    } catch (IOException ioe) {
+      Log.e(LOG_TAG, ioe.getMessage(), ioe);
+    }
+    if (files != null) {
+      for (String filename : files) {
+        if (filename.equals("stops.txt")) {
+          InputStream in = null;
+          OutputStream out = null;
+          try {
+            in = assetManager.open(filename);
+            File outFile = new File(getExternalFilesDir(null), filename);
+            out = new FileOutputStream(outFile);
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = in.read(buffer)) != -1) {
+              out.write(buffer, 0, read);
+            }
+            stopFile = outFile;
+          } catch (IOException ioe) {
+            Log.e(LOG_TAG, ioe.getMessage(), ioe);
+          } finally {
+            if (in != null) {
+              try {
+                in.close();
+              } catch (IOException ioe) {
+              }
+            }
+            if (out != null) {
+              try {
+                out.close();
+              } catch (IOException ioe) {
+              }
+            }
+          }
+        }
+      }
+    }
+    return stopFile;
+  }
+
   private class GetXMLFeedAsyncTask extends AsyncTask<Void, Void, Void> {
 
     private final OkHttpClient okClient = new OkHttpClient();
@@ -476,6 +549,16 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     protected Void doInBackground(Void... params) {
+
+
+      //Load stops information
+      //TODO: load stops into database (upon creation of database only)
+      try {
+        LoadSchedule.getStopsFromCSV(saveAssetsToDevice());
+      } catch (IOException ioe) {
+        Log.e(LOG_TAG, ioe.getMessage(), ioe);
+      }
+
       try {
         Request request = new Request.Builder().url(AppConfig.CVTD_FEED_URL).build();
         Response response = okClient.newCall(request).execute();

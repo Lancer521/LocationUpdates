@@ -1,9 +1,24 @@
 package com.google.android.gms.location.sample.locationupdates;
 
 import android.location.Location;
+import com.google.android.gms.location.sample.locationupdates.DomainObjects.StopBean;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.ParseBool;
+import org.supercsv.cellprocessor.ParseDouble;
+import org.supercsv.cellprocessor.ParseInt;
+import org.supercsv.cellprocessor.constraint.StrNotNullOrEmpty;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvBeanReader;
+import org.supercsv.io.ICsvBeanReader;
+import org.supercsv.prefs.CsvPreference;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 
@@ -297,5 +312,41 @@ public class LoadSchedule {
       times.elementAt(8).add(civic_center_time.getTime());
       times.elementAt(9).add(school_district_time.getTime());
     }
+  }
+
+  //TODO: Load each stop directly into Database upon the creation of the Database
+  public static List<StopBean> getStopsFromCSV(File file) throws IOException {
+    List<StopBean> stopList = new ArrayList<>(); //Used more for testing at this point - will be unnecessary when database is implemented
+    ICsvBeanReader beanReader = null;
+    try {
+      final CellProcessor[] processors = new CellProcessor[]{
+          new ParseInt(), // stop_id
+          new Optional(), // stop_code
+          new StrNotNullOrEmpty(), // stop_name
+          new Optional(), // stop_desc
+          new ParseDouble(), // stop_lat
+          new ParseDouble(), // stop_lon
+          new Optional(), // zone_id
+          new Optional(), // stop_url
+          new Optional(new ParseBool()), // location_type
+          new Optional(new ParseInt()), // parent_station
+          new Optional(), // stop_timezone
+          new Optional() // wheelchair_boarding
+      };
+
+      beanReader = new CsvBeanReader(new FileReader(file), CsvPreference.STANDARD_PREFERENCE);
+
+      String[] header = beanReader.getHeader(true);
+      StopBean stop;
+
+      while ((stop = beanReader.read(StopBean.class, header, processors)) != null) {
+        stopList.add(stop);
+      }
+    } finally {
+      if (beanReader != null) {
+        beanReader.close();
+      }
+    }
+    return stopList;
   }
 }
