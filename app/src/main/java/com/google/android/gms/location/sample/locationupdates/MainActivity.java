@@ -33,6 +33,7 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.sample.locationupdates.DomainObjects.StopBean;
 import com.google.android.gms.location.sample.locationupdates.DomainObjects.XMLFeed;
 import com.google.gson.Gson;
 import okhttp3.OkHttpClient;
@@ -41,14 +42,26 @@ import okhttp3.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.ParseBool;
+import org.supercsv.cellprocessor.ParseDouble;
+import org.supercsv.cellprocessor.ParseInt;
+import org.supercsv.cellprocessor.constraint.StrNotNullOrEmpty;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvBeanReader;
+import org.supercsv.io.ICsvBeanReader;
+import org.supercsv.prefs.CsvPreference;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Copyright 2016 Tylen Smith
@@ -98,7 +111,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity implements
     ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
 
-  protected static final String LOG_TAG = "location-updates-sample";
+  protected static final String LOG_TAG = MainActivity.class.toString();
 
   /**
    * The Package Name for global use
@@ -164,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements
    * Data members to hold bus route information
    */
   protected MyTaskParams myParameters = new MyTaskParams();
+  protected List<StopBean> stops;
 
   private SharedPreferences settings = null;
   private SharedPreferences.OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
@@ -200,8 +214,9 @@ public class MainActivity extends AppCompatActivity implements
     mRequestingLocationUpdates = false;
     mLastUpdateTime = "";
 
-    //Populate hard-coded vectors for time/location
-    LoadSchedule.build(myParameters.locations, myParameters.times);
+    //Load stops
+    //TODO: Load the stops directly into the database
+    new LoadSchedule().execute(saveAssetsToDevice());
 
     //Get routes from XML feed
     new GetXMLFeedAsyncTask().execute();
@@ -479,19 +494,7 @@ public class MainActivity extends AppCompatActivity implements
 
   private boolean checkTransportMode() {
     myParameters.getSpeed();
-    if (myParameters.currentSpeed >= myParameters.BIKE_MAX_SPEED) {
-      return false;
-    }
-    if (myParameters.walkingEnabled) {
-      if (myParameters.bikingEnabled) {
-        return true;
-      }
-      if (myParameters.currentSpeed >= myParameters.BIKE_MIN_SPEED) {
-        return false;
-      }
-      return true;
-    }
-    return false;
+    return myParameters.currentSpeed < myParameters.BIKE_MAX_SPEED && myParameters.walkingEnabled && (myParameters.bikingEnabled || myParameters.currentSpeed < myParameters.BIKE_MIN_SPEED);
   }
 
   private File saveAssetsToDevice() {
@@ -525,12 +528,14 @@ public class MainActivity extends AppCompatActivity implements
               try {
                 in.close();
               } catch (IOException ioe) {
+                Log.e(LOG_TAG, ioe.getMessage());
               }
             }
             if (out != null) {
               try {
                 out.close();
               } catch (IOException ioe) {
+                Log.e(LOG_TAG, ioe.getMessage());
               }
             }
           }
@@ -550,17 +555,8 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected Void doInBackground(Void... params) {
 
-
-      //Load stops information
-      //TODO: load stops into database (upon creation of database only)
       try {
-        LoadSchedule.getStopsFromCSV(saveAssetsToDevice());
-      } catch (IOException ioe) {
-        Log.e(LOG_TAG, ioe.getMessage(), ioe);
-      }
-
-      try {
-        Request request = new Request.Builder().url(AppConfig.CVTD_FEED_URL).build();
+        Request request = new Request.Builder().url(getString(R.string.cvtd_feed_url)).build();
         Response response = okClient.newCall(request).execute();
 
         String xml = response.body().string();
@@ -576,6 +572,46 @@ public class MainActivity extends AppCompatActivity implements
       } catch (JSONException e) {
         Log.e(LOG_TAG, "JSONException in getRoutesFromServer");
         e.printStackTrace();
+      }
+      return null;
+    }
+  }
+
+  //TODO: Load each stop directly into Database upon the creation/upgrade of the Database
+  public class LoadSchedule extends AsyncTask<File, Void, Void> {
+
+    @Override
+    protected Void doInBackground(File... params) {
+      List<StopBean> stopList = new ArrayList<>(); //Used more for testing at this point - will be unnecessary when database is implemented
+      ICsvBeanReader beanReader;
+      try {
+        final CellProcessor[] processors = new CellProcessor[]{
+            new ParseInt(), // stop_id
+            new Optional(), // stop_code
+            new StrNotNullOrEmpty(), // stop_name
+            new Optional(), // stop_desc
+            new ParseDouble(), // stop_lat
+            new ParseDouble(), // stop_lon
+            new Optional(), // zone_id
+            new Optional(), // stop_url
+            new Optional(new ParseBool()), // location_type
+            new Optional(new ParseInt()), // parent_station
+            new Optional(), // stop_timezone
+            new Optional() // wheelchair_boarding
+        };
+
+        beanReader = new CsvBeanReader(new FileReader(params[0]), CsvPreference.STANDARD_PREFERENCE);
+
+        String[] header = beanReader.getHeader(true);
+        StopBean stop;
+
+        while ((stop = beanReader.read(StopBean.class, header, processors)) != null) {
+          stopList.add(stop);
+        }
+
+        beanReader.close();
+      } catch (IOException ioe) {
+        Log.e(LOG_TAG, "Error parsing CSV file");
       }
       return null;
     }
